@@ -1,0 +1,71 @@
+.benefits {
+  &__container {
+    @media screen and (min-width: 768px) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  }
+  &__link {
+    @extend %link-arrow;
+    display: block;
+  }
+
+  &__title {
+    @include font(700, 30px, 37px, #B3B3BA);
+    @extend %bg-linear-gradient-reversed;
+    padding: 10px 0 30px;
+    @media screen and (min-width: 768px) {
+      @include font(700, 38px, 46px, #B3B3BA);
+      padding: 10px 0 60px;
+    }
+  }
+}
+
+
+.benefit {
+  @media screen and (min-width: 768px) {
+    width: 45.370370%;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 28%;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 30.303030%;
+  }
+  @media screen and (min-width: 1920px) {
+    width: 30.833125%;
+  }
+
+  &__img-wrap {
+    background: #FFFFFF;
+    border-radius: 24px;
+    width: 92px;
+    height: 92px;
+    position: relative;
+    margin-bottom: 30px;
+
+    &:hover {
+      animation: img-scale 0.5s ease;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+  }
+
+  &__title {
+    @include font(700, 22px, 27px, $regular-blue);
+    margin-bottom: 15px;
+  }
+
+  &__content {
+    @include font(400, 16px, 26px, #FFF);
+    padding-bottom: 30px;
+  }
+}

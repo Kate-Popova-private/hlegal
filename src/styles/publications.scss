@@ -1,0 +1,85 @@
+.publications {
+  background: #F5F5FA;
+  padding: 30px 0;
+
+  &__container {
+    @media screen and (min-width: 768px) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-content: stretch;
+      @media screen and (min-width: 1024px) {
+        flex-wrap: nowrap;
+      }
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    @extend %link-arrow;
+    margin-bottom: 5px;
+    @media screen and (min-width: 768px) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__title {
+    @extend %bg-linear-gradient-reversed;
+    @include font(700, 30px, 37px);
+  }
+}
+
+.publication {
+  background: #FFFFFF;
+  padding-bottom: 30px;
+  margin-top: 30px;
+  border-radius: 8px;
+  @media screen and (min-width: 768px) {
+    width: 47.685185%;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 31.120943%;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 31.818181%;
+  }
+  @media screen and (min-width: 1920px) {
+    width: 32.083125%;
+  }
+
+  &:last-child {
+    flex-grow: 1;
+    @media screen and (min-width: 1024px) {
+      flex-grow: 0;
+    }
+  }
+
+  &__img {
+    border-radius: 8px 8px 0 0;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 30px;
+  }
+
+  &__title {
+    @include font(700, 16px, 20px, $regular-blue);
+    margin-bottom: 15px;
+    padding: 0 30px;
+  }
+
+  &__date {
+    @include font(700, 12px, 15px, #B3B3BA);
+    padding: 15px 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0 30px 15px;
+    border-bottom: 4px solid #e6e6f0;
+    display: block;
+  }
+
+  &__content {
+    @include font(400, 14px, 22px, #000);
+    padding: 0 30px;
+  }
+}
