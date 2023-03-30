@@ -6,6 +6,7 @@
       justify-content: space-between;
     }
   }
+
   &__link {
     @extend %link-arrow;
     display: block;
@@ -24,6 +25,10 @@
 
 
 .benefit {
+  a {
+    text-decoration: none;
+  }
+
   @media screen and (min-width: 768px) {
     width: 45.370370%;
   }
@@ -44,6 +49,7 @@
     height: 92px;
     position: relative;
     margin-bottom: 30px;
+    display: inline-block;
 
     &:hover {
       animation: img-scale 0.5s ease;
@@ -55,13 +61,12 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
-
   }
 
   &__title {
-    @include font(700, 22px, 27px, $regular-blue);
     margin-bottom: 15px;
+
+    @include font(700, 22px, 27px, $regular-blue);
   }
 
   &__content {

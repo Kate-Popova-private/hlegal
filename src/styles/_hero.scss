@@ -1,21 +1,21 @@
 .hero {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: calc(100vh);
+
 
   &__title {
     @include font(700, 38px, 46px, #FFF);
     height: calc(100vh - 165px);
+    text-align: center;
     display: flex;
-    justify-content: center;
     align-items: center;
-    @media screen and (min-width: 768px) {
-      height: calc(100vh - 217.4px - 42px - 30px);
-    }
-    @media screen and (min-width: 1024px) {
-      height: calc(100vh - 185.4px);
-    }
   }
 
   &__scroll {
+    display: block;
     margin-bottom: 30px;
   }
 
