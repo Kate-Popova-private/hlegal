@@ -5,7 +5,7 @@
   margin: 0;
   box-sizing: border-box;
 }
-
+$main: #323264;
 $accent: #F0145A;
 $regular-blue: #24A3FF;
 $hover-blue: #0085FF;
@@ -109,7 +109,7 @@ body {
 .publications__wrap,
 .footer__container,
 .link,
-.service{
+.service {
 
   @media screen and (min-width: 375px) {
     @include small-container-mixin;
@@ -128,7 +128,7 @@ body {
   }
 }
 
-.footer__email, .service__btn_free, .footer__phone-number, .footer__link-on-map, .address__link-on-map, .nav__item {
+.footer__email, .header__phone-number, .service__btn_free, .footer__phone-number, .footer__link-on-map, .address__link-on-map, .nav__item {
   text-decoration: none;
 }
 
@@ -191,15 +191,16 @@ body {
   }
 }
 
-.bg-gray {
-  position: absolute;
-  background: rgba(245, 245, 250, 0.2);
-  width: 100%;
-  z-index: 100;
-  @media screen and (min-width: 768px) {
-    background: none;
-  }
-}
+//??????????????????????????????????????????????????
+//.bg-gray {
+//  position: absolute;
+//  background: rgba(245, 245, 250, 0.2);
+//  width: 100%;
+//  z-index: 100;
+//  @media screen and (min-width: 768px) {
+//    background: none;
+//  }
+//}
 .social {
   &__img:hover path {
     fill: $accent;

@@ -1,0 +1,51 @@
+@import "global";
+
+.breadcrumbs {
+  display: inline-block;
+
+  &__crumb {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      transform: translateY(-50%);
+      display: inline-block;
+      content: '';
+      background-image: url('../img/Slash.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin-top: 15px;
+      margin-left: 4px;
+
+      @media screen and (min-width: 375px) {
+        width: 11.62px;
+        height: 26px;
+      }
+      @media screen and (min-width: 768px) {
+        width: 21px;
+        height: 47px;
+      }
+    }
+
+    &_color-white {
+      color: $main;
+    }
+
+    &_color-dark {
+      color: #FFF;
+    }
+
+    a {
+      //text-decoration: none;
+      @media screen and (min-width: 375px) {
+        @include font(400px, 20px, 24px, inherit);
+        color: inherit;
+        margin-left: 20px;
+
+      }
+      @media screen and (min-width: 768px) {
+        @include font(400px, 36px, 44px, inherit);
+      }
+    }
+  }
+}

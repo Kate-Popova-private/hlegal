@@ -1,5 +1,5 @@
 import './App.css';
-import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from "react-router-dom";
+import {createBrowserRouter, createRoutesFromElements, Link, Route, RouterProvider} from "react-router-dom";
 import Home from "./pages/Home";
 import Header from "./components/Header";
 import Services from "./pages/Services";
@@ -11,8 +11,20 @@ function App() {
             createRoutesFromElements(
                 <Route path="/" element={<Header/>}>
                     <Route index element={<Home/>}/>
-                    <Route path="/services" element={<Services/>}/>
-                    <Route path="/services/:id" element={<ServiceEntry/>}/>
+                    <Route path="/services" element={<Services/>}
+                           handle={{
+                               crumb: (data) => <Link to="/services">services</Link>
+                           }}
+                    />
+                    <Route path="/services/:id" element={<ServiceEntry/>}
+                           handle={{
+                               crumb: (data) => <Link to="/services">services</Link>
+                           }}
+                    />
+                    <Route path="/about"
+                           handle={{
+                               crumb: (data) => <Link to="/about">about</Link>
+                           }}/>
                 </Route>
             ), {basename: "/hlegal"})
         }/>

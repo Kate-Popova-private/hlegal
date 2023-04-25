@@ -72,7 +72,6 @@ const Home = () => {
             </section>
             <Clients/>
             <Publications></Publications>
-
         </>
     );
 };
