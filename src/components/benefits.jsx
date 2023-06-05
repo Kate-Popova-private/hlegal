@@ -1,32 +1,21 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import BenefitCard from "./BenefitCard";
-import {collection, getDocs} from "firebase/firestore";
-import {ref, getDownloadURL} from "firebase/storage";
-import {db, storage} from "../firebase";
 import {useDispatch, useSelector} from "react-redux";
-import {servicesLoading, servicesLoadingSuccess} from "../store/action/servicesAction";
+import {benefitsLoadingSuccess} from "../store/action/benefitsAction";
 import Loader from "./Loader/Loader";
+import axios from "axios";
 
 const Benefits = () => {
     const {loading, benefits, error} = useSelector((store) => store.benefits);
     const dispatch = useDispatch();
+    const [countPage, setCountPage] = useState(1);
 
     useEffect(() => {
-        dispatch(servicesLoading());
-        (async () => {
-            let docs = await getDocs(collection(db, "benefits"));
-            let tempArr = [];
-            docs.forEach((doc) => {
-                tempArr.push({...doc.data(),id:doc.id})
-            })
-            for (const doc of tempArr) {
-                doc.img = await getDownloadURL(ref(storage, `benefits/${doc.img}`));
-            }
-            dispatch(servicesLoadingSuccess(tempArr));
-        })()
-
-
-    }, [])
+        axios.get('http://hlegal/api.php?type=services').then(({data}) => {
+            dispatch(benefitsLoadingSuccess(data));
+            console.log('data', data)
+        })
+    }, []);
 
 
     return (
@@ -36,8 +25,9 @@ const Benefits = () => {
                 <div className="benefits__container">
 
                     {loading ? <Loader></Loader>
-                        : benefits && benefits.map((service, index) => (
-                        <BenefitCard key={`ctgr_${index}`} img={service.img} title={service.title} content={service.shortContent} id={service.id}/>
+                        : benefits && benefits['result'].map((service, index) => (
+                        <BenefitCard key={`ctgr_${index}`} img={service.img} title={service.title}
+                                     content={service.shortDesc} id={service.id}/>
                     ))}
                 </div>
             </section>

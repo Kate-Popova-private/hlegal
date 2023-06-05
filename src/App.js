@@ -1,11 +1,28 @@
-import './App.css';
-import {createBrowserRouter, createRoutesFromElements, Link, Route, RouterProvider} from "react-router-dom";
+import {
+    createBrowserRouter,
+    createRoutesFromElements,
+    Link,
+    Navigate,
+    Route,
+    Router,
+    RouterProvider
+} from "react-router-dom";
 import Home from "./pages/Home";
 import Header from "./components/Header";
 import Services from "./pages/Services";
 import ServiceEntry from "./pages/ServiceEntry";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import {languageSelected} from "./store/action/languageAction";
+import PublicationsList from "./components/publicationsList";
+import Publications from "./pages/Publications/index";
+import PublicationEntry from "./pages/PublicationEntry";
 
 function App() {
+
+    const dispatch = useDispatch();
+    dispatch(languageSelected('EN'));
+
     return (
         <RouterProvider router={createBrowserRouter(
             createRoutesFromElements(
@@ -16,7 +33,7 @@ function App() {
                                crumb: (data) => <Link to="/services">services</Link>
                            }}
                     />
-                    <Route path="/services/:id" element={<ServiceEntry/>}
+                    <Route path="/service/:id" element={<ServiceEntry/>}
                            handle={{
                                crumb: (data) => <Link to="/services">services</Link>
                            }}
@@ -25,10 +42,16 @@ function App() {
                            handle={{
                                crumb: (data) => <Link to="/about">about</Link>
                            }}/>
-                </Route>
-            ), {basename: "/hlegal"})
-        }/>
-    );
+                    <Route path="/publications" element={<Publications/>}
+                           handle={{
+                               crumb: (data) => <Link to="/publications">publications</Link>
+                           }}/>
+                    <Route path="/publication/:id" element={<PublicationEntry/>}
+                           handle={{
+                               crumb: (data) => <Link to="/publications">publications</Link>
+                           }}/>
+                </Route>), {basename: "/hlegal"})
+        }/>);
 }
 
 export default App;

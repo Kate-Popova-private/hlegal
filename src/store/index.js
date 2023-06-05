@@ -1,11 +1,15 @@
 import {configureStore} from "@reduxjs/toolkit";
-import servicesReducer from "./reducer/servicesReducer";
-import serviceCardReducer from "./reducer/serviceCardReducer";
+import benefitsReducer from "./reducer/benefitsReducer";
+import serviceReducer from "./reducer/serviceReducer";
+import languageReducer from "./reducer/languageReducer";
+import publicationsListReducer from "./reducer/publicationsListReducer";
 
 
 export const store = configureStore({
     reducer: {
-        benefits: servicesReducer,
-        service: serviceCardReducer,
+        benefits: benefitsReducer,
+        service: serviceReducer,
+        language: languageReducer,
+        publicationsList: publicationsListReducer,
     }
 })

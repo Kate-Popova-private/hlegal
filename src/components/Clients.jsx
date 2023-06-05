@@ -1,16 +1,16 @@
 import React from 'react';
-import client1 from "../img/client1.webp";
-import client2 from "../img/client2.webp";
-import client3 from "../img/client3.webp";
-import client4 from "../img/client4.webp";
-import client5 from "../img/client5.webp";
-import client6 from "../img/client6.webp";
-import client7 from "../img/client7.webp";
-import client8 from "../img/client8.webp";
-import client9 from "../img/client9.webp";
-import client10 from "../img/client10.webp";
-import client11 from "../img/client11.webp";
-import client12 from "../img/client12.webp";
+import client1 from "../assets/img/client1.webp";
+import client2 from "../assets/img/client2.webp";
+import client3 from "../assets/img/client3.webp";
+import client4 from "../assets/img/client4.webp";
+import client5 from "../assets/img/client5.webp";
+import client6 from "../assets/img/client6.webp";
+import client7 from "../assets/img/client7.webp";
+import client8 from "../assets/img/client8.webp";
+import client9 from "../assets/img/client9.webp";
+import client10 from "../assets/img/client10.webp";
+import client11 from "../assets/img/client11.webp";
+import client12 from "../assets/img/client12.webp";
 
 const Clients = () => {
     return (

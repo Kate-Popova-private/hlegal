@@ -82,7 +82,7 @@ body {
   text-decoration: none;
 
   &::after {
-    content: url("../img/Arrow_right.svg");
+    content: url("../assets/img/Arrow_right.svg");
     height: 12px;
     position: absolute;
     top: 50%;
@@ -137,29 +137,28 @@ body {
   border-radius: 0 0 12px 12px;
   margin-bottom: 80px;
   @media screen and (min-width: 375px) {
-    margin-top: -100px;
-    padding-top: 100px;
+    margin-top: -110px;
+    padding-top: 110px;
   }
   @media screen and (min-width: 768px) {
-    margin-top: -228px;
-    padding-top: 283px;
+    margin-top: -238px;
+    padding-top: 293px;
   }
   @media screen and (min-width: 1024px) {
-    margin-top: -120px;
-    padding-top: 185px;
-
+    margin-top: -130px;
+    padding-top: 195px;
   }
 }
 
 .bg-logo {
-  background: url("../img/h_logo.svg") no-repeat top, linear-gradient(228.57deg, #323264 11.93%, #323264 57.17%, #643E72 87.46%);
+  background: url("../assets/img/h_logo.svg") no-repeat top, linear-gradient(228.57deg, #323264 11.93%, #323264 57.17%, #643E72 87.46%);
   border-radius: 0 0 12px 12px;
   padding-bottom: 30px;
 
   @media screen and (min-width: 375px) {
     background-size: 140%, 100%;
     margin-bottom: 50px;
-    margin-top: -97px;
+    margin-top: -107px;
   }
   @media screen and (min-width: 768px) {
     background-size: 117%, 100%;

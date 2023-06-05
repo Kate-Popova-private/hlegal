@@ -5,9 +5,9 @@ const BenefitCard = (props) => {
     const id = props.id;
     return (
         <div className="benefit">
-            <Link to={`/services/${id}`}>
+            <Link to={`/service/${id}`}>
                 <div className="benefit__img-wrap">
-                    <img src={props.img} alt="benefit" className="benefit__img"/>
+                    <img src={`http://hlegal/${props.img}`} alt="benefit" className="benefit__img"/>
                 </div>
                 <h4 className="benefit__title">{props.title}</h4>
                <p className="benefit__content">{props.content}</p>

@@ -1,17 +1,23 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import '../styles/home.scss'
-import teamLid from '../img/Team-1.webp'
+import teamLid from '../assets/img/Team-1.webp'
 import Benefits from "../components/benefits";
 import LinkArrow from "../components/linkArrow";
 import Clients from "../components/Clients";
-import Publications from "../components/publications";
+import PublicationsList from "../components/publicationsList";
+import {useSelector} from "react-redux";
 
 const Home = () => {
+
+    const {language} = useSelector((store) => store.language);
+
+    let jsonLang = require(`../translate/translate_${language}.json`);
+
     return (
         <>
             <div className="bg-logo">
                 <section className="hero">
-                    <h2 className="hero__title">you legal solutions provider</h2>
+                    <h2 className="hero__title">{jsonLang.home.title}</h2>
                     <a href="/#" className="hero__scroll">
                         <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="none">
                             <g stroke="#fff" strokeWidth="2" clipPath="url(#a)">
@@ -71,7 +77,7 @@ const Home = () => {
                 </div>
             </section>
             <Clients/>
-            <Publications></Publications>
+            <PublicationsList title = "We have something to tell"></PublicationsList>
         </>
     );
 };
