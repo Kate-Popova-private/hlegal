@@ -109,7 +109,8 @@ body {
 .publications__wrap,
 .footer__container,
 .link,
-.service {
+.service,
+.public-card__wrap {
 
   @media screen and (min-width: 375px) {
     @include small-container-mixin;

@@ -3,6 +3,7 @@ import benefitsReducer from "./reducer/benefitsReducer";
 import serviceReducer from "./reducer/serviceReducer";
 import languageReducer from "./reducer/languageReducer";
 import publicationsListReducer from "./reducer/publicationsListReducer";
+import fullPublicationsReducer from "./reducer/fullPublicationsReducer";
 
 
 export const store = configureStore({
@@ -11,5 +12,6 @@ export const store = configureStore({
         service: serviceReducer,
         language: languageReducer,
         publicationsList: publicationsListReducer,
+        fullPublications: fullPublicationsReducer,
     }
 })

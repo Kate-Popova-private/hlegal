@@ -5,7 +5,7 @@ import {
     Navigate,
     Route,
     Router,
-    RouterProvider
+    RouterProvider, useLocation
 } from "react-router-dom";
 import Home from "./pages/Home";
 import Header from "./components/Header";
@@ -14,11 +14,18 @@ import ServiceEntry from "./pages/ServiceEntry";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {languageSelected} from "./store/action/languageAction";
-import PublicationsList from "./components/publicationsList";
+
 import Publications from "./pages/Publications/index";
-import PublicationEntry from "./pages/PublicationEntry";
+import PublicationCard from "./pages/PublicationCard/PublicationCard";
+
 
 function App() {
+    // const { pathname } = useLocation();
+    //
+    // useEffect(() => {
+    //     window.scrollTo(0, 0);
+    // }, [pathname]);
+
 
     const dispatch = useDispatch();
     dispatch(languageSelected('EN'));
@@ -46,12 +53,16 @@ function App() {
                            handle={{
                                crumb: (data) => <Link to="/publications">publications</Link>
                            }}/>
-                    <Route path="/publication/:id" element={<PublicationEntry/>}
+                    <Route path="/publication/:id" element={<PublicationCard/>}
                            handle={{
                                crumb: (data) => <Link to="/publications">publications</Link>
                            }}/>
-                </Route>), {basename: "/hlegal"})
+                </Route>
+            )
+            , {basename: "/hlegal"})
+
         }/>);
+
 }
 
 export default App;
