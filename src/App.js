@@ -17,6 +17,7 @@ import {languageSelected} from "./store/action/languageAction";
 
 import Publications from "./pages/Publications/index";
 import PublicationCard from "./pages/PublicationCard/PublicationCard";
+import ModalMessage from "./components/Modal/ModalMessage";
 
 
 function App() {
@@ -26,42 +27,47 @@ function App() {
     //     window.scrollTo(0, 0);
     // }, [pathname]);
 
-
     const dispatch = useDispatch();
     dispatch(languageSelected('EN'));
 
-    return (
-        <RouterProvider router={createBrowserRouter(
-            createRoutesFromElements(
-                <Route path="/" element={<Header/>}>
-                    <Route index element={<Home/>}/>
-                    <Route path="/services" element={<Services/>}
-                           handle={{
-                               crumb: (data) => <Link to="/services">services</Link>
-                           }}
-                    />
-                    <Route path="/service/:id" element={<ServiceEntry/>}
-                           handle={{
-                               crumb: (data) => <Link to="/services">services</Link>
-                           }}
-                    />
-                    <Route path="/about"
-                           handle={{
-                               crumb: (data) => <Link to="/about">about</Link>
-                           }}/>
-                    <Route path="/publications" element={<Publications/>}
-                           handle={{
-                               crumb: (data) => <Link to="/publications">publications</Link>
-                           }}/>
-                    <Route path="/publication/:id" element={<PublicationCard/>}
-                           handle={{
-                               crumb: (data) => <Link to="/publications">publications</Link>
-                           }}/>
-                </Route>
-            )
-            , {basename: "/hlegal"})
 
-        }/>);
+    return (
+        <>
+            <RouterProvider router={createBrowserRouter(
+                createRoutesFromElements(
+                    <Route path="/" element={<Header/>}>
+                        <Route index element={<Home/>}/>
+                        <Route path="/services" element={<Services/>}
+                               handle={{
+                                   crumb: (data) => <Link to="/services">services</Link>
+                               }}
+                        />
+                        <Route path="/service/:id" element={<ServiceEntry/>}
+                               handle={{
+                                   crumb: (data) => <Link to="/services">services</Link>
+                               }}
+                        />
+                        <Route path="/about"
+                               handle={{
+                                   crumb: (data) => <Link to="/about">about</Link>
+                               }}/>
+                        <Route path="/publications" element={<Publications/>}
+                               handle={{
+                                   crumb: (data) => <Link to="/publications">publications</Link>
+                               }}/>
+                        <Route path="/publication/:id" element={<PublicationCard/>}
+                               handle={{
+                                   crumb: (data) => <Link to="/publications">publications</Link>
+                               }}/>
+
+                    </Route>
+                )
+                , {basename: "/hlegal"})
+
+            }/>
+            <ModalMessage></ModalMessage>
+        </>
+    );
 
 }
 

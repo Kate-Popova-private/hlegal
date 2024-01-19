@@ -4,6 +4,7 @@ import serviceReducer from "./reducer/serviceReducer";
 import languageReducer from "./reducer/languageReducer";
 import publicationsListReducer from "./reducer/publicationsListReducer";
 import fullPublicationsReducer from "./reducer/fullPublicationsReducer";
+import modalMessageReducer from "./reducer/modalMessageReducer";
 
 
 export const store = configureStore({
@@ -13,5 +14,6 @@ export const store = configureStore({
         language: languageReducer,
         publicationsList: publicationsListReducer,
         fullPublications: fullPublicationsReducer,
+        modalMessage: modalMessageReducer,
     }
 })

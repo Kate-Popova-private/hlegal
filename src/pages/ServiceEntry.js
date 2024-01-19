@@ -4,17 +4,15 @@ import {Link, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {
     serviceLoading,
-    serviceLoadingFailed,
     serviceLoadingSuccess
 } from "../store/action/serviceAction";
-import {doc, getDoc} from "firebase/firestore";
-import {db, storage} from "../firebase";
-import {getDownloadURL, ref} from "firebase/storage";
+
 import Loader from "../components/Loader/Loader";
 import PublicationsList from "../components/publicationsList";
 import ServiceCard from "../components/serviceCard";
 import axios from "axios";
-import Modal from "../components/Modal";
+import ModalForm from "../components/Modal/ModalForm";
+import {modalMessageAdd} from "../store/action/modalMessageAction";
 
 
 const ServiceEntry = () => {
@@ -24,6 +22,23 @@ const ServiceEntry = () => {
     const {img, title, shortDesc, fullDesc, list} = {...fullService};
     const [modal, setModal] = useState(false);
     const body = document.querySelector('body');
+    const [response, setResponse] = useState({});
+
+
+    function updateResponse(value) {
+        setResponse(value);
+    }
+
+    useEffect(() => {
+        if (response.status === 200) {
+            dispatch(modalMessageAdd({message: 'Your request has been sent :)'}));
+        }
+        if (response.status >= 500) {
+            dispatch(modalMessageAdd({message: 'Server error, try you later :('}));
+        }
+
+
+    }, [response])
 
     useEffect(() => {
         if (modal) {
@@ -39,7 +54,6 @@ const ServiceEntry = () => {
 
         axios.get(`http://hlegal/api.php?type=services&id=${id}`).then(({data}) => {
             dispatch(serviceLoadingSuccess(data.result));
-            console.log('data.result', data.result)
         })
     }, [id])
     return (
@@ -64,8 +78,7 @@ const ServiceEntry = () => {
                 </div>
             </div>
             <PublicationsList topPage='news' title="Recommended" link={true}></PublicationsList>
-            <Modal isOpen={modal} onClose={() => setModal(false)}></Modal>
-
+            <ModalForm isOpen={modal} onClose={() => setModal(false)} updateResponse={updateResponse}></ModalForm>
         </>
     );
 };
