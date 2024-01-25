@@ -23,7 +23,7 @@ const Header = () => {
     }
 
     function changeTheme(location) {
-        if (location.pathname.startsWith('/publication')){
+        if (location.pathname.startsWith('/publication')) {
             setHeaderBg('notTransparent');
             setTranspBg(true);
 
@@ -46,7 +46,8 @@ const Header = () => {
 
     return (
         <>
-            <header className={`header${headerBg === 'transparent' ? 'header__remove' : ''} ${transpBg  ? 'header__change-bg' : ''}`}>
+            <header
+                className={`header${headerBg === 'transparent' ? 'header__remove' : ''} ${transpBg ? 'header__change-bg' : ''}`}>
                 <div className="header__container">
                     <div className={`header__language language language_${headerTheme}`}>
                         <span className={`language__item language__item_${headerTheme}`}

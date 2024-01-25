@@ -42,14 +42,25 @@ const ModalForm = ({isOpen, onClose, updateResponse}) => {
         setResponseJson({response: responseJson, ...responseJson[`${event.target.getAttribute('name')}`] = ''})
     }
 
+    // document.querySelector('modal-wrapper').addEventListener('click', (e) => {
+    //     if (e.currentTarget === this) {
+    //         onClose(false)
+    //
+    //     }
+    // })
+
+    function closeForm(e) {
+        if (e.target === document.querySelector('.modal-wrapper')) onClose(false)
+    }
+
     return (
         <>
             {isOpen && (
-                <section className="modal-wrapper">
+                <section className="modal-wrapper" onClick={closeForm}>
                     <div className="modal">
                         <h2 className="modal__title">We would like to help you</h2>
                         <img src={Close} alt="close button" className="modal__btn-close"
-                             onChange={() => onClose(false)}></img>
+                             onClick={() => onClose(false)}></img>
                         <form onSubmit={handleSubmit((data) => sendData(data))}
                               className="modal__form ">
                             <input {...register('name', {required: true, minLength: 1, maxLength: 100})}
@@ -127,7 +138,8 @@ const ModalForm = ({isOpen, onClose, updateResponse}) => {
             )
             }
         </>
-    );
+    )
+        ;
 };
 
 export default ModalForm;

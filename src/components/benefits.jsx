@@ -11,10 +11,22 @@ const Benefits = () => {
     const [countPage, setCountPage] = useState(1);
 
     useEffect(() => {
-        axios.get('http://hlegal/api.php?type=services').then(({data}) => {
-            dispatch(benefitsLoadingSuccess(data));
-            console.log('data', data)
+        // axios.get('http://hlegal/api.php?type=services').then(({data}) => {
+        //     dispatch(benefitsLoadingSuccess(data));
+        //     console.log('data', data)
+        // })
+
+        fetch('http://hlegal/api.php?type=services', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            // mode: 'no-cors',
+
+        }).then(async response => {
+
         })
+            .catch(error => console.log('error ', error));
     }, []);
 
 

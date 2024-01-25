@@ -18,6 +18,7 @@ import {languageSelected} from "./store/action/languageAction";
 import Publications from "./pages/Publications/index";
 import PublicationCard from "./pages/PublicationCard/PublicationCard";
 import ModalMessage from "./components/Modal/ModalMessage";
+import About from "./pages/About";
 
 
 function App() {
@@ -47,7 +48,7 @@ function App() {
                                    crumb: (data) => <Link to="/services">services</Link>
                                }}
                         />
-                        <Route path="/about"
+                        <Route path="/about" element={<About/>}
                                handle={{
                                    crumb: (data) => <Link to="/about">about</Link>
                                }}/>
@@ -59,7 +60,6 @@ function App() {
                                handle={{
                                    crumb: (data) => <Link to="/publications">publications</Link>
                                }}/>
-
                     </Route>
                 )
                 , {basename: "/hlegal"})
