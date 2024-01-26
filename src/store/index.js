@@ -5,6 +5,7 @@ import languageReducer from "./reducer/languageReducer";
 import publicationsListReducer from "./reducer/publicationsListReducer";
 import fullPublicationsReducer from "./reducer/fullPublicationsReducer";
 import modalMessageReducer from "./reducer/modalMessageReducer";
+import employeesListReducer from "./reducer/employeesListReducer";
 
 
 export const store = configureStore({
@@ -15,5 +16,6 @@ export const store = configureStore({
         publicationsList: publicationsListReducer,
         fullPublications: fullPublicationsReducer,
         modalMessage: modalMessageReducer,
+        employeesList: employeesListReducer,
     }
 })

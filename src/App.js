@@ -8,7 +8,7 @@ import {
     RouterProvider, useLocation
 } from "react-router-dom";
 import Home from "./pages/Home";
-import Header from "./components/Header/Header";
+import Header from "./components/Header";
 import Services from "./pages/Services";
 import ServiceEntry from "./pages/ServiceEntry";
 import {useDispatch, useSelector} from "react-redux";
@@ -19,6 +19,7 @@ import Publications from "./pages/Publications/index";
 import PublicationCard from "./pages/PublicationCard/PublicationCard";
 import ModalMessage from "./components/Modal/ModalMessage";
 import About from "./pages/About";
+import Team from "./pages/Team";
 
 
 function App() {
@@ -52,6 +53,10 @@ function App() {
                                handle={{
                                    crumb: (data) => <Link to="/about">about</Link>
                                }}/>
+                        <Route path="/team" element={<Team/>}
+                                           handle={{
+                                               crumb: (data) => <Link to="/team">team</Link>
+                                           }}/>
                         <Route path="/publications" element={<Publications/>}
                                handle={{
                                    crumb: (data) => <Link to="/publications">publications</Link>
