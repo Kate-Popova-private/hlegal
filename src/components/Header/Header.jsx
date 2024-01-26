@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import hLogoName from "../assets/img/hlegal_name.svg";
-import hLogoName_dark from "../assets/img/hLogoName_dark.svg";
+import hLogoName from "../../assets/img/hlegal_name.svg";
+import hLogoName_dark from "../../assets/img/hLogoName_dark.svg";
 import {Link, NavLink, Outlet, useLocation} from "react-router-dom";
-import Footer from "./Footer";
-import Breadcrumbs from "./Breadcrumbs";
+import Footer from "../Footer";
+import Breadcrumbs from "../Breadcrumbs";
 import {useDispatch, useSelector} from "react-redux";
-import {languageSelected} from "../store/action/languageAction";
+import {languageSelected} from "../../store/action/languageAction";
+import './header.scss';
 
 const Header = () => {
 

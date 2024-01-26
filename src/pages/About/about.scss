@@ -1,4 +1,4 @@
-@import "../../styles/global";
+@use "../../styles/global" as *;
 
 
 .about {
@@ -66,6 +66,7 @@
 
   &__img {
     padding-top: 30px;
+    width: 100%;
     @media screen and (min-width: 768px) {
       padding: 60px 0;
     }

@@ -1,5 +1,5 @@
-@import "global";
-@import "header";
+@use "global"as *;
+//@import "header";
 @import "breadcrumbs";
 @import "hero";
 @import "advantage";

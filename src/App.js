@@ -8,7 +8,7 @@ import {
     RouterProvider, useLocation
 } from "react-router-dom";
 import Home from "./pages/Home";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import Services from "./pages/Services";
 import ServiceEntry from "./pages/ServiceEntry";
 import {useDispatch, useSelector} from "react-redux";

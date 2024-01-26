@@ -1,4 +1,4 @@
-@import "../../styles/global";
+@use "../../styles/global" as *;
 
 .progress {
   border-left: 4px solid #E6E6F0;

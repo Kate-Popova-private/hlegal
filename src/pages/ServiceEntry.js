@@ -54,6 +54,7 @@ const ServiceEntry = () => {
 
         axios.get(`http://hlegal/api.php?type=services&id=${id}`).then(({data}) => {
             dispatch(serviceLoadingSuccess(data.result));
+            console.log('type=services', data.result);
         })
     }, [id])
     return (
