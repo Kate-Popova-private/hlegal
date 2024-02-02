@@ -6,6 +6,7 @@ import publicationsListReducer from "./reducer/publicationsListReducer";
 import fullPublicationsReducer from "./reducer/fullPublicationsReducer";
 import modalMessageReducer from "./reducer/modalMessageReducer";
 import employeesListReducer from "./reducer/employeesListReducer";
+import employeeCardReducer from "./reducer/employeeCardReducer";
 
 
 export const store = configureStore({
@@ -17,5 +18,6 @@ export const store = configureStore({
         fullPublications: fullPublicationsReducer,
         modalMessage: modalMessageReducer,
         employeesList: employeesListReducer,
+        employeeCard: employeeCardReducer,
     }
 })

@@ -20,6 +20,7 @@ import PublicationCard from "./pages/PublicationCard/PublicationCard";
 import ModalMessage from "./components/Modal/ModalMessage";
 import About from "./pages/About";
 import Team from "./pages/Team";
+import EmployeeCard from "./pages/EmployeeCard";
 
 
 function App() {
@@ -54,9 +55,13 @@ function App() {
                                    crumb: (data) => <Link to="/about">about</Link>
                                }}/>
                         <Route path="/team" element={<Team/>}
-                                           handle={{
-                                               crumb: (data) => <Link to="/team">team</Link>
-                                           }}/>
+                               handle={{
+                                   crumb: (data) => <Link to="/team">team</Link>
+                               }}/>
+                        <Route path="/employee/:id" element={<EmployeeCard/>}
+                               handle={{
+                                   crumb: (data) => <Link to="/employee">employee</Link>
+                               }}/>
                         <Route path="/publications" element={<Publications/>}
                                handle={{
                                    crumb: (data) => <Link to="/publications">publications</Link>
