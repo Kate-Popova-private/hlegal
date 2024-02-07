@@ -21,7 +21,7 @@ const Team = () => {
     return (<div className="employees">
         <h2 className="employees__title">We are used to taking responsibility and always guarantee honest, timely
             assistance, even in situations where most are powerless.</h2>
-        <section className="employees__container ">
+        <section className="employees__container">
             {employees.map(item => (
                 <Link to={`/employee/${item.id}`}>
                     <div className="employee">
