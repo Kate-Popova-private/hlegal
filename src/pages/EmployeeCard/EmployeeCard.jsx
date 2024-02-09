@@ -22,24 +22,24 @@ const EmployeeCard = () => {
     }, [id])
     return (
         <div className="card">
-            <section className="employee-card">
-                <div className="employee-card__container">
-                    <div className="employee-card__img-wrap">
+            <section className="employee">
+                <div className="employee__container">
+                    <div className="employee__img-wrap">
                         <img src={`http://hlegal/${employee?.img}`} alt="employee image"
-                             className="employee-card__img"/>
+                             className="employee__img"/>
                     </div>
-                    <div className="employee-card__info-wrap">
-                        <h2 className="employee-card__name">{employee?.name}</h2>
-                        <span className="employee-card__position">{employee?.position}</span>
-                        <a href="#" className="employee-card__social">{employee?.email}</a>
-                        <a href={employee?.linkedIn} className="employee-card__social">LinkedIn profile</a>
+                    <div className="employee__info-wrap">
+                        <h2 className="employee__name">{employee?.name}</h2>
+                        <span className="employee__position">{employee?.position}</span>
+                        <a href="#" className="employee__social">{employee?.email}</a>
+                        <a href={employee?.linkedIn} className="employee__social">LinkedIn profile</a>
                     </div>
-                    <div className="employee-card__desription-wrap">
-                        <p className="employee-card__desription">{employee?.aboutMe}</p>
-                        <span className="employee-card__caption">education</span>
-                        <p className="employee-card__desription">{employee?.education}</p>
-                        <span className="employee-card__caption">experience</span>
-                        <p className="employee-card__desription">{employee?.experience}</p>
+                    <div className="employee__desription-wrap">
+                        <p className="employee__desription">{employee?.aboutMe}</p>
+                        <span className="employee__caption">education</span>
+                        <p className="employee__desription">{employee?.education}</p>
+                        <span className="employee__caption">experience</span>
+                        <p className="employee__desription">{employee?.experience}</p>
                     </div>
                 </div>
             </section>

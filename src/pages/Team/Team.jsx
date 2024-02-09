@@ -24,10 +24,10 @@ const Team = () => {
         <section className="employees__container">
             {employees.map(item => (
                 <Link to={`/employee/${item.id}`}>
-                    <div className="employee">
-                        <img src={`http://hlegal/${item.img}`} alt="" className="employee__img"/>
-                        <span className="employee__name">{item.name}</span>
-                        <span className="employee__position">{item.position}</span>
+                    <div className="employees__employee">
+                        <img src={`http://hlegal/${item.img}`} alt="" className="employees__img"/>
+                        <span className="employees__name">{item.name}</span>
+                        <span className="employees__position">{item.position}</span>
                     </div>
                 </Link>
             ))}

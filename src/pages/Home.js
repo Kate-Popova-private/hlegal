@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import '../styles/home.scss'
-import teamLid from '../assets/img/Team-1.webp'
+import teamLid from '../assets/img/Team_photos/Team-1.webp';
+import teamLid2x from '../assets/img/Team_photos/Team-1@2x.webp';
+import teamLid3x from '../assets/img/Team_photos/Team-1@3x.webp';
 import Benefits from "../components/benefits";
 import LinkArrow from "../components/linkArrow";
 import Clients from "../components/Clients";
@@ -72,6 +74,11 @@ const Home = () => {
             <section className="team">
                 <div className="team__container">
                     <img src={teamLid} alt="team" className="team__img"/>
+                    {/*<picture>*/}
+                    {/*    <source srcSet={teamLid2x} media="(min-width: 768px)"/>*/}
+                    {/*    <source srcSet={teamLid3x} media="(min-width: 1440px)"/>*/}
+                    {/*    <img src={teamLid} alt="team" className="team__img"/>*/}
+                    {/*</picture>*/}
                     <div className="team__content">
                         <a href="/#" className="team__link">команда</a>
                         <h2 className="team__title">Ми звикли брати на себе відповідальність та завжди гарантуємо
@@ -90,7 +97,8 @@ const Home = () => {
                 </div>
             </section>
             <Clients/>
-            <PublicationsList topPage = 'news' perpage = {3} title = "We have something to tell" link = {true}></PublicationsList>
+            <PublicationsList topPage='news' perpage={3} title="We have something to tell"
+                              link={true}></PublicationsList>
         </>
     );
 };

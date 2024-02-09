@@ -4,9 +4,10 @@ import hLogoName_dark from "../../assets/img/hLogoName_dark.svg";
 import {Link, NavLink, Outlet, useLocation} from "react-router-dom";
 import Footer from "../Footer";
 import Breadcrumbs from "../Breadcrumbs";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {languageSelected} from "../../store/action/languageAction";
 import './header.scss';
+import MobileMenu from "../MobileMenu";
 
 const Header = () => {
 
@@ -18,9 +19,6 @@ const Header = () => {
 
     function changeLanguage(e) {
         dispatch(languageSelected(`${e.target.dataset.language}`));
-
-        console.log(e.target.dataset.language);
-
     }
 
     function changeTheme(location) {
@@ -36,13 +34,23 @@ const Header = () => {
 
         } else {
             setHeaderTheme('color-white')
+        }
+    }
 
-
+    function openMobileMenu(e) {
+        if (e.target === document.querySelector('.nav__hamburger')) {
+            document.querySelector('.mobile-nav-wrap').style.display = 'block';
+            document.querySelector('body').style.overflow = 'hidden';
         }
     }
 
     useEffect(() => {
         changeTheme(location);
+        if (location.pathname === '/') {
+            document.querySelector('.header').style.position = 'absolute';
+        } else {
+            document.querySelector('.header').style.position = 'relative';
+        }
     }, [location]);
 
     return (
@@ -88,11 +96,11 @@ const Header = () => {
                     </Link>
                     <nav className={`nav header__nav nav_${headerTheme}`}>
                         {headerTheme === 'color-dark' ?
-                            <svg className={`nav__hamburger nav__hamburger_${headerTheme}`}
+                            <svg onClick={openMobileMenu} className={`nav__hamburger nav__hamburger_${headerTheme}`}
                                  xmlns="http://www.w3.org/2000/svg" width="32" height="33">
                                 <path stroke="#fff" strokeWidth="2" d="M7 10.5h18M7 16.5h18M7 22.5h18"/>
                             </svg>
-                            : <svg className={`nav__hamburger nav__hamburger_${headerTheme}`}
+                            : <svg onClick={openMobileMenu} className={`nav__hamburger nav__hamburger_${headerTheme}`}
                                    xmlns="http://www.w3.org/2000/svg" width="32" height="33">
                                 <path stroke="#323264" strokeWidth="2" d="M7 10.5h18M7 16.5h18M7 22.5h18"/>
                             </svg>
@@ -107,6 +115,7 @@ const Header = () => {
             </header>
             <Outlet/>
             <Footer/>
+            <MobileMenu></MobileMenu>
         </>
     );
 };

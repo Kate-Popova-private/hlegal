@@ -1,7 +1,11 @@
 @use "../../styles/global" as *;
 
 .header {
-  position: relative;
+  //position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 
   &::before {
     content: "";

@@ -46,7 +46,7 @@ const ServiceEntry = () => {
         } else
             body.style.overflow = 'unset';
 
-    }, [modal])
+    }, [modal]);
 
     useEffect(() => {
 
