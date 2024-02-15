@@ -16,14 +16,12 @@ const PublicationsList = (props) => {
                     {loading ? <Loader></Loader>
                         : (props.topPage === 'news' ? news?.result : articles?.result)?.map((item, index) =>
 
-                            <Link key={`pblc_${index}`} to={`/publication/${item.id}`}>
-                                <div className="publication">
+                            <Link className="publication" key={`pblc_${index}`} to={`/publication/${item.id}`}>
                                     <img className="publication__img" src={`http://hlegal/${item.img}`}
                                          alt="publication"/>
                                     <h5 className="publication__title">{item.title}</h5>
                                     <span className="publication__date">{item.created_at}</span>
                                     <p className="publication__shortDesc">{item.shortDesc}</p>
-                                </div>
                             </Link>
                         )}
                 </div>

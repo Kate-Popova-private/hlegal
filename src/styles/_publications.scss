@@ -8,9 +8,6 @@
       flex-wrap: wrap;
       justify-content: space-between;
       align-content: stretch;
-      //@media screen and (min-width: 1024px) {
-      //  flex-wrap: nowrap;
-      //}
     }
   }
 
@@ -28,32 +25,32 @@
     @include font(700, 30px, 37px);
     margin-bottom: 30px;
   }
-  a{
-    text-decoration: none;
-    @media screen and (min-width: 768px) {
-      width: 47.685185%;
-    }
-    @media screen and (min-width: 1024px) {
-      width: 31.120943%;
-    }
-    @media screen and (min-width: 1440px) {
-      width: 31.818181%;
-    }
-    @media screen and (min-width: 1920px) {
-      width: 32.083125%;
-    }
-  }
-
 }
+
 //Не работает
 //.publication:nth-last-child(1){
 //  margin-bottom: 0;
 //}
 .publication {
+  display: block;
   background: #FFFFFF;
   padding-bottom: 30px;
   border-radius: 8px;
   margin-bottom: 30px;
+  text-decoration: none;
+
+  @media screen and (min-width: 768px) {
+    width: 47.685185%;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 31.120943%;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 31.818181%;
+  }
+  @media screen and (min-width: 1920px) {
+    width: 32.083125%;
+  }
 
   &:last-child {
     flex-grow: 1;

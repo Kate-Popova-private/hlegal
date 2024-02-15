@@ -23,12 +23,10 @@ const Team = () => {
             assistance, even in situations where most are powerless.</h2>
         <section className="employees__container">
             {employees.map(item => (
-                <Link to={`/employee/${item.id}`}>
-                    <div className="employees__employee">
+                <Link to={`/employee/${item.id}`} className="employees__employee">
                         <img src={`http://hlegal/${item.img}`} alt="" className="employees__img"/>
                         <span className="employees__name">{item.name}</span>
                         <span className="employees__position">{item.position}</span>
-                    </div>
                 </Link>
             ))}
         </section>

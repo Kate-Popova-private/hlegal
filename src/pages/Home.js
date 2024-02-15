@@ -1,8 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import '../styles/home.scss'
-import teamLid from '../assets/img/Team_photos/Team-1.webp';
-import teamLid2x from '../assets/img/Team_photos/Team-1@2x.webp';
-import teamLid3x from '../assets/img/Team_photos/Team-1@3x.webp';
 import Benefits from "../components/benefits";
 import LinkArrow from "../components/linkArrow";
 import Clients from "../components/Clients";
@@ -10,6 +7,7 @@ import PublicationsList from "../components/publicationsList";
 import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
 import {publicationsNewsSuccess} from "../store/action/publicationListAction";
+import TeamMessage from "../components/TeamMessage";
 
 const Home = () => {
 
@@ -71,31 +69,7 @@ const Home = () => {
                     <Benefits/>
                 </main>
             </div>
-            <section className="team">
-                <div className="team__container">
-                    <img src={teamLid} alt="team" className="team__img"/>
-                    {/*<picture>*/}
-                    {/*    <source srcSet={teamLid2x} media="(min-width: 768px)"/>*/}
-                    {/*    <source srcSet={teamLid3x} media="(min-width: 1440px)"/>*/}
-                    {/*    <img src={teamLid} alt="team" className="team__img"/>*/}
-                    {/*</picture>*/}
-                    <div className="team__content">
-                        <a href="/#" className="team__link">команда</a>
-                        <h2 className="team__title">Ми звикли брати на себе відповідальність та завжди гарантуємо
-                            чесну, вчасну
-                            допомогу,
-                            ё навіть
-                            у ситуаціях, коли більшість безсилі.</h2>
-                        <span className="team__author">Олександр Олександровський</span>
-                        <span className="team__author-info">Керуючий партнер</span>
-                    </div>
-                </div>
-                <div className="btn-radio">
-                    <div className="btn-radio__item"></div>
-                    <div className="btn-radio__item"></div>
-                    <div className="btn-radio__item"></div>
-                </div>
-            </section>
+            <TeamMessage></TeamMessage>
             <Clients/>
             <PublicationsList topPage='news' perpage={3} title="We have something to tell"
                               link={true}></PublicationsList>

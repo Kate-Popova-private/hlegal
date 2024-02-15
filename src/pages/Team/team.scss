@@ -22,30 +22,26 @@
   }
 
   &__employee {
+    display: block;
     position: relative;
     @media screen and (min-width: 768px) {
-      width: 294px;
+      width: calc(50% - 30px);
+
     }
     @media screen and (min-width: 1024px) {
-      width: 261.33px;
-    }
-    @media screen and (min-width: 1440px) {
-      width: 400px;
-    }
-    @media screen and (min-width: 1920px) {
-      width: 493.33px;
+      width: calc(33.333333% - 40px);
     }
   }
 
   &__img {
     border-radius: 12px;
     margin: 30px 0 15px;
-    @media screen and (min-width: 1024px) {
+    width: 100%;
+
+
+    @media screen and (min-width: 768px) {
       object-fit: cover;
       height: 400px;
-    }
-    @media screen and (min-width: 1920px) {
-      width: 493.33px;
     }
   }
 

@@ -30,13 +30,13 @@
 
   &__content {
     @media screen and (min-width: 1024px) {
-      width: 486px;
+      width: 53.761061%;
     }
     @media screen and (min-width: 1440px) {
-      width: 662px;
+      width: 50.151515%;
     }
     @media screen and (min-width: 1920px) {
-      width: 942px;
+      width: 58.875%;
     }
   }
 
@@ -85,10 +85,11 @@
       padding-top: 0;
     }
     @media screen and (min-width: 1440px) {
-      width: 658px;
+      width: 50.151515%;
+
     }
     @media screen and (min-width: 1920px) {
-      width: 938px;
+      width: 58.875%;
     }
   }
 }

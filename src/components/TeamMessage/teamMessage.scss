@@ -1,4 +1,11 @@
-.team {
+@use '../../styles/global' as *;
+
+.team-message {
+  .slick-dots {
+    background: #fff;
+    position: unset;
+    padding: 25px 0 55px;
+  }
 
   &__container {
     background: #FFFFFF;
@@ -8,7 +15,6 @@
 
     @media screen and (min-width: 1024px) {
       flex-direction: row;
-
     }
   }
 
@@ -22,10 +28,8 @@
 
     }
   }
-picture{
 
-}
-  &__img, picture {
+  &__img {
     border-radius: 12px 12px 0 0;
     width: 100%;
     height: 500px;

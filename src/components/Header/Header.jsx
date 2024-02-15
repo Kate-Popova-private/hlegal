@@ -54,7 +54,7 @@ const Header = () => {
     }, [location]);
 
     return (
-        <>
+        <div className="wrapper">
             <header
                 className={`header${headerBg === 'transparent' ? 'header__remove' : ''} ${transpBg ? 'header__change-bg' : ''}`}>
                 <div className="header__container">
@@ -113,10 +113,12 @@ const Header = () => {
                     </nav>
                 </div>
             </header>
-            <Outlet/>
+            <main className="content">
+                <Outlet/>
+            </main>
             <Footer/>
             <MobileMenu></MobileMenu>
-        </>
+        </div>
     );
 };
 

@@ -13,7 +13,7 @@ const PublicationCard = () => {
         let {news} = useSelector((store) => store.publicationsList);
         let {publicationCard} = useSelector((store) => store.fullPublications);
         const dispatch = useDispatch();
-        let {img, title, content, created_at} = {...publicationCard?.result?.mainContent};
+        let {img, title, paragraph, created_at} = {...publicationCard?.result?.mainContent};
         let {additionalContent} = {...publicationCard?.result};
 
         // const { pathname } = useLocation();
@@ -48,7 +48,7 @@ const PublicationCard = () => {
                         <img src={`http://hlegal/${img}`} alt="" className="public-card__img"/>
                         <h2 className="public-card__title">{title}</h2>
                         <span className="public-card__date">{created_at}</span>
-                        <p className="public-card__paragraph">{content}</p>
+                        <p className="public-card__paragraph">{paragraph}</p>
                         {additionalContent?.map((item, index) => {
 
                             if (item.type === 'img') {
