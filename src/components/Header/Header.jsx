@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import hLogoName from "../../assets/img/hlegal_name.svg";
 import hLogoName_dark from "../../assets/img/hLogoName_dark.svg";
-import {Link, NavLink, Outlet, useLocation} from "react-router-dom";
+import {Link, NavLink, Outlet, useLocation, useParams} from "react-router-dom";
 import Footer from "../Footer";
 import Breadcrumbs from "../Breadcrumbs";
 import {useDispatch} from "react-redux";
@@ -17,6 +17,12 @@ const Header = () => {
     const [headerBg, setHeaderBg] = useState('');
     const [transpBg, setTranspBg] = useState(false);
 
+    const {id} = useParams();
+    //
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [id]);
+
     function changeLanguage(e) {
         dispatch(languageSelected(`${e.target.dataset.language}`));
     }
@@ -25,9 +31,8 @@ const Header = () => {
         if (location.pathname.startsWith('/publication')) {
             setHeaderBg('notTransparent');
             setTranspBg(true);
-
         }
-        if (location.pathname === '/' || location.pathname.startsWith('/services')) {
+        if (location.pathname === '/' || location.pathname.startsWith('/services') || location.pathname.startsWith('/service')) {
             setHeaderTheme('color-dark');
             setHeaderBg('notTransparent');
             setTranspBg(false);

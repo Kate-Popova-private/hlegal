@@ -1,4 +1,4 @@
-@use "global" as *;
+@use "../../styles/global" as *;
 
 .breadcrumbs {
   display: inline-block;
@@ -6,16 +6,25 @@
   &__crumb {
     position: relative;
 
+    @media screen and (min-width: 375px) {
+      @include font(400px, 20px, 24px, inherit);
+      color: inherit;
+      margin-left: 29px;
+
+    }
+    @media screen and (min-width: 768px) {
+      @include font(400px, 36px, 44px, inherit);
+    }
+
     &::before {
       position: absolute;
       transform: translateY(-50%);
-      display: inline-block;
+      display:  block;
       content: '';
-      background-image: url('../assets/img/Slash.svg');
+      background-image: url('../../assets/img/Slash.svg');
       background-repeat: no-repeat;
       background-size: contain;
-      margin-top: 15px;
-      margin-left: 4px;
+      margin: 23px 4px 0;
 
       @media screen and (min-width: 375px) {
         width: 11.62px;
@@ -33,19 +42,6 @@
 
     &_color-dark {
       color: #FFF;
-    }
-
-    a {
-      //text-decoration: none;
-      @media screen and (min-width: 375px) {
-        @include font(400px, 20px, 24px, inherit);
-        color: inherit;
-        margin-left: 20px;
-
-      }
-      @media screen and (min-width: 768px) {
-        @include font(400px, 36px, 44px, inherit);
-      }
     }
   }
 }

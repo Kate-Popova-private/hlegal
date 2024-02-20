@@ -5,7 +5,7 @@ import {
     Navigate,
     Route,
     Router,
-    RouterProvider, useLocation
+    RouterProvider, useLocation, useParams
 } from "react-router-dom";
 import Home from "./pages/Home";
 import Header from "./components/Header";
@@ -25,15 +25,8 @@ import Contact from "./pages/Contact/Contact";
 
 
 function App() {
-    // const { pathname } = useLocation();
-    //
-    // useEffect(() => {
-    //     window.scrollTo(0, 0);
-    // }, [pathname]);
-
     const dispatch = useDispatch();
     dispatch(languageSelected('EN'));
-
 
     return (
         <>
@@ -61,7 +54,7 @@ function App() {
                                }}/>
                         <Route path="/employee/:id" element={<EmployeeCard/>}
                                handle={{
-                                   crumb: (data) => <Link to="/employee">employee</Link>
+                                   crumb: (data) => <Link to="/team">team</Link>
                                }}/>
                         <Route path="/publications" element={<Publications/>}
                                handle={{

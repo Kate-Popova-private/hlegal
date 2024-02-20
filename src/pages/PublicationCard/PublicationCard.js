@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
 import {publicationsNewsSuccess} from "../../store/action/publicationListAction";
 import "./publicationCard.scss";
-import {useLocation, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {fullPublicationsSuccess} from "../../store/action/fullPublicationsAction";
 import Socials from "../../components/Socials";
 
@@ -17,9 +17,6 @@ const PublicationCard = () => {
         let {additionalContent} = {...publicationCard?.result};
 
         // const { pathname } = useLocation();
-
-        useEffect(() => {
-        }, [id]);
 
         useEffect(() => {
             // For recommendation section
@@ -37,8 +34,6 @@ const PublicationCard = () => {
                 dispatch(fullPublicationsSuccess(data));
 
             }).catch(() => console.log('error'));
-
-            window.scrollTo(0, 0);
         }, [id]);
 
         return (
