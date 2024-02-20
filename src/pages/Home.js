@@ -8,6 +8,8 @@ import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
 import {publicationsNewsSuccess} from "../store/action/publicationListAction";
 import TeamMessage from "../components/TeamMessage";
+import Advantage from "../components/Advantage";
+import Carousel from "../components/test";
 
 const Home = () => {
 
@@ -46,25 +48,7 @@ const Home = () => {
                     </a>
                 </section>
                 <main className="main">
-                    <div className="advantage">
-                        <div className="advantage__nav">
-                            <span className="advantage__nav-item">Consistent</span>
-                            <span className="advantage__nav-item">Customer oriented</span>
-                            <span className="advantage__nav-item">Innovative</span>
-                            <span className="advantage__nav-item">Business oriented</span>
-                        </div>
-                        <div className="advantage__content">
-                            <h4 className="advantage__title">We turn the idea of legal services</h4>
-                            <p className="advantage__text">Consolidating many years of experience and practice, the
-                                company's
-                                lawyers
-                                accompany complex projects and achieve a number of important decisions for the industry.
-                                Many
-                                of
-                                them
-                                form the practice of applying the law of the sea in Ukraine.</p>
-                        </div>
-                    </div>
+                    <Advantage></Advantage>
                     <LinkArrow link={"/services"} linkName={"Services"}/>
                     <Benefits/>
                 </main>
