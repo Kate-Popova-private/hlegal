@@ -118,7 +118,7 @@ const Header = () => {
                     </nav>
                 </div>
             </header>
-            <main className="content">
+            <main className="main-content">
                 <Outlet/>
             </main>
             <Footer/>

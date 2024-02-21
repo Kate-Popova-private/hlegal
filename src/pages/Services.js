@@ -1,6 +1,6 @@
 import React from 'react';
-import Benefits from "../components/benefits";
-import Clients from "../components/Clients";
+import Benefits from "../components/Benefits";
+import Clients from "../components/Clients/Clients";
 
 const Services = () => {
     return (

@@ -1,3 +1,6 @@
+@use '../../styles/global' as *
+;
+
 .benefits {
   &__container {
     @media screen and (min-width: 768px) {
@@ -7,17 +10,11 @@
     }
   }
 
-  &__link {
-    @extend %link-arrow;
-    display: block;
-  }
-
   &__title {
-    @include font(700, 30px, 37px, #B3B3BA);
-    @extend %bg-linear-gradient-reversed;
-    padding: 30px 0;
+    @include h2-mobile-gradient-reversed;
+    padding: 10px 0;
     @media screen and (min-width: 768px) {
-      @include font(700, 38px, 46px, #B3B3BA);
+      @include h2-regular-gradient-reversed;
       padding: 10px 0 60px;
     }
   }

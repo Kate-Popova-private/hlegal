@@ -21,7 +21,7 @@
   &__content {
     background: #F5F5FA;
     border-radius: 0 0 12px 12px;
-    padding: 0 30px 30px;
+    padding: 30px;
     text-align: left;
     @media screen and (min-width: 1024px) {
       border-radius: 0 12px 12px 0;
@@ -46,19 +46,12 @@
     }
   }
 
-  &__link {
-    @extend %link-arrow;
-    display: inline-block;
-    margin: 30px 0 5px;
-  }
-
   &__title {
     @extend %bg-linear-gradient-reversed;
     @include font(700, 30px, 37px);
-    padding-bottom: 30px;
+    padding: 5px 0 30px 0;
     @media screen and (min-width: 768px) {
       @include font(700, 38px, 46px);
-
     }
   }
 

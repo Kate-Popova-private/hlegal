@@ -10,7 +10,7 @@ import {
 import Home from "./pages/Home";
 import Header from "./components/Header";
 import Services from "./pages/Services";
-import ServiceEntry from "./pages/ServiceEntry";
+import ServiceCard from "./pages/ServiceCard/ServiceCard";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {languageSelected} from "./store/action/languageAction";
@@ -39,7 +39,7 @@ function App() {
                                    crumb: (data) => <Link to="/services">services</Link>
                                }}
                         />
-                        <Route path="/service/:id" element={<ServiceEntry/>}
+                        <Route path="/service/:id" element={<ServiceCard/>}
                                handle={{
                                    crumb: (data) => <Link to="/services">services</Link>
                                }}

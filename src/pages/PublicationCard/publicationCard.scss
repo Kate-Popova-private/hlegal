@@ -1,6 +1,6 @@
 @use "../../styles/global" as *;
 
-.public-card__wrap{
+.public-card__wrap {
   @media screen and (min-width: 1440px) {
     width: 75%;
   }
@@ -8,6 +8,7 @@
     width: 70.833333%;
   }
 }
+
 .public-card {
   padding-top: 30px;
   border-bottom: solid 4px #E6E6F0;
@@ -28,7 +29,8 @@
       height: 500px;
     }
   }
-  &__additionalImg{
+
+  &__additionalImg {
     width: 100%;
     margin-bottom: 30px;
     display: block;
@@ -36,10 +38,10 @@
     margin-right: auto;
 
     @media screen and (min-width: 768px) {
-    width: 98.765432%;
-  }
+      width: 98.765432%;
+    }
     @media screen and (min-width: 1024px) {
-     width: 70.796460%;
+      width: 70.796460%;
     }
   }
 
@@ -51,9 +53,10 @@
       @include font(700, 30px, 37px, #323264);
     }
   }
-  &__additionalTitle{
+
+  &__additionalTitle {
     margin-bottom: 30px;
-    @include font(700,30px, 36px, #fff);
+    @include font(700, 30px, 36px, #fff);
     @extend %bg-linear-gradient-reversed;
     @media screen and (min-width: 768px) {
       @include font(700, 38px, 46px, #323264);

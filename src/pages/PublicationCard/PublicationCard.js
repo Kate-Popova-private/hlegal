@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import PublicationsList from "../../components/publicationsList";
+import PublicationsList from "../../components/PublicationsList/publicationsList";
 import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
 import {publicationsNewsSuccess} from "../../store/action/publicationListAction";

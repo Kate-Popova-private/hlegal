@@ -1,3 +1,5 @@
+@use "../../styles/global" as *;
+
 .publications {
   background: #F5F5FA;
   padding: 30px 0;
@@ -11,19 +13,10 @@
     }
   }
 
-  &__link {
-    display: inline-block;
-    @extend %link-arrow;
-    margin-bottom: 5px;
-    @media screen and (min-width: 768px) {
-      margin-bottom: 10px;
-    }
-  }
-
   &__title {
     @extend %bg-linear-gradient-reversed;
     @include font(700, 30px, 37px);
-    margin-bottom: 30px;
+    margin: 5px 0 30px;
   }
 }
 

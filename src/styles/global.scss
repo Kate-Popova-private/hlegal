@@ -51,6 +51,28 @@ $active-blue: #006CCF;
   width: 83.333333%;
 }
 
+///////////////////////////////////
+%h2-mobile-gradient-reversed {
+  @include font(700, 30px, 37px);
+  @extend %bg-linear-gradient-reversed;
+}
+
+%h2-regular-gradient-reversed {
+  @include font(700, 38px, 46px);
+  @extend %bg-linear-gradient-reversed;
+}
+
+@mixin h2-mobile-gradient-reversed {
+  @include font(700, 30px, 37px);
+  @include bg-linear-gradient-reversed;
+}
+
+@mixin h2-regular-gradient-reversed {
+  @include font(700, 38px, 46px);
+  @include bg-linear-gradient-reversed;
+}
+
+//////////////////////////////////////
 %bg-linear-gradient {
   background: linear-gradient(90.13deg, #EF8080 0.84%, #F0145A 99.96%);
   -webkit-background-clip: text;
@@ -65,23 +87,19 @@ $active-blue: #006CCF;
   //background-clip: text;
 }
 
-%link-arrow {
-  @include font(700, 14px, 17px, $regular-blue);
-  position: relative;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  text-decoration: none;
-
-  &::after {
-    content: url("../assets/img/Arrow_right.svg");
-    height: 12px;
-    position: absolute;
-    top: 50%;
-    margin-left: 2px;
-    transform: translateY(-60%);
-  }
-
-  &:hover {
-    color: $accent;
-  }
+@mixin bg-linear-gradient {
+  background: linear-gradient(90.13deg, #EF8080 0.84%, #F0145A 99.96%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  //background-clip: text;
 }
+
+@mixin bg-linear-gradient-reversed {
+  background: linear-gradient(90.13deg, #F0145A 0.84%, #EF8080 99.96%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  //background-clip: text;
+}
+
+/////////////////////////////////////////////////
+

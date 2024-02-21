@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import "./publications.scss"
-import PublicationsList from "../../components/publicationsList";
+import PublicationsList from "../../components/PublicationsList/publicationsList";
 import Switch from "../../components/Switch";
 import axios from "axios";
 import DownloadButton from "../../components/DownloadButton";
@@ -53,8 +53,7 @@ const Publications = () => {
                 <Switch switch1='news' switch2='articles' isActive={topPage}
                         setActive={setTopPage}></Switch>
             </div>
-            <PublicationsList topPage={topPage.name} link={false}
-                              title={false}></PublicationsList>
+            <PublicationsList topPage={topPage.name} title={false}></PublicationsList>
             <div className="download-btn-wrap">
                 {maxPage > topPage.page && <DownloadButton pageIncrement={pageIncrement}></DownloadButton>}
             </div>

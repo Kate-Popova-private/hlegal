@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import Loader from "./Loader/Loader";
+import Loader from "../Loader/Loader";
 import {Link} from "react-router-dom";
+import LinkArrow from "../LinkArrow";
+import './publications.scss';
 
 const PublicationsList = (props) => {
 
@@ -10,18 +12,18 @@ const PublicationsList = (props) => {
     return (
         <section className="publications">
             <div className="publications__wrap">
-                {props.link && <a href="/hlegal/publications" className="publications__link">Publications</a>}
+                <LinkArrow link={"/publications"} linkName={"Publications"}/>
                 {props.title && <h4 className="publications__title">{props.title}</h4>}
                 <div className="publications__container">
                     {loading ? <Loader></Loader>
                         : (props.topPage === 'news' ? news?.result : articles?.result)?.map((item, index) =>
 
                             <Link className="publication" key={`pblc_${index}`} to={`/publication/${item.id}`}>
-                                    <img className="publication__img" src={`http://hlegal/${item.img}`}
-                                         alt="publication"/>
-                                    <h5 className="publication__title">{item.title}</h5>
-                                    <span className="publication__date">{item.created_at}</span>
-                                    <p className="publication__shortDesc">{item.shortDesc}</p>
+                                <img className="publication__img" src={`http://hlegal/${item.img}`}
+                                     alt="publication"/>
+                                <h5 className="publication__title">{item.title}</h5>
+                                <span className="publication__date">{item.created_at}</span>
+                                <p className="publication__shortDesc">{item.shortDesc}</p>
                             </Link>
                         )}
                 </div>

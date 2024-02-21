@@ -3,6 +3,7 @@ import './teamMessage.scss';
 import axios from "axios";
 import Slider from "react-slick";
 import {Link} from "react-router-dom";
+import LinkArrow from "../LinkArrow";
 
 const TeamMessage = () => {
     const [employeeMessage, setEmployeeMessage] = useState([]);
@@ -30,7 +31,7 @@ const TeamMessage = () => {
                         <div className="team-message__container">
                             <img src={`http://hlegal/${item.img}`} alt="employee" className="team-message__img"/>
                             <div className="team-message__content">
-                                <Link to="/team" className="team-message__link">команда</Link>
+                                <LinkArrow link="/team" linkName="команда"></LinkArrow>
                                 <h2 className="team-message__title">{item.message}</h2>
                                 <span className="team-message__author">{item.name}</span>
                                 <span className="team-message__author-info">{item.position}</span>
