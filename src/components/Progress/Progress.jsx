@@ -26,5 +26,4 @@ const Progress = () => {
         </section>
     );
 };
-
 export default Progress;

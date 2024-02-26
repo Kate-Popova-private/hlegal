@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import "./publications.scss"
 import PublicationsList from "../../components/PublicationsList/publicationsList";
 import Switch from "../../components/Switch";
 import axios from "axios";
@@ -7,16 +6,15 @@ import DownloadButton from "../../components/DownloadButton";
 import {publicationsArticlesSuccess, publicationsNewsSuccess} from "../../store/action/publicationListAction";
 import {useDispatch, useSelector} from "react-redux";
 import {newsData, articlesData} from "../../data/publicationsData";
+import "./publications.scss";
 
 const Publications = () => {
-
     const [topPage, setTopPage] = useState(newsData);
     const {news, articles} = useSelector((store) => store.publicationsList);
     const [page, setPage] = useState(topPage.page);
     const [currentPage, setCurrentPage] = useState(topPage.currentPage);
     const [maxPage, setMaxPage] = useState(news?.maxPage);
     const dispatch = useDispatch();
-
 
     useEffect(() => {
         if ((!news.result.length && topPage.name === 'news' && currentPage <= page) || (topPage.name === 'news' && page >= 2 && currentPage < page)) {
@@ -46,7 +44,6 @@ const Publications = () => {
     function pageIncrement() {
         setPage(topPage.page += 1);
     }
-
     return (
         <>
             <div className="switch-wrap">

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import Benefits from "../components/Benefits";
 import Clients from "../components/Clients/Clients";
 import PublicationsList from "../components/PublicationsList/publicationsList";
@@ -10,16 +10,12 @@ import Advantage from "../components/Advantage";
 import Hero from "../components/Hero";
 
 const Home = () => {
-
-    let {news} = useSelector((store) => store.publicationsList);
-
+    let {news} = useSelector((store) => store.publicationsList)
     const dispatch = useDispatch();
-
 
     useEffect(() => {
         if (!news.result.length) {
             axios.get(`http://hlegal/api.php?type=news&page=1&mode=list&perpage=3`).then(({data}) => {
-
                 dispatch(publicationsNewsSuccess(data));
             })
         }

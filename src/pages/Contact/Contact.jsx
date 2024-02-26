@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import './contact.scss';
 import MessageForm from "../../components/MessageForm";
 import {modalMessageAdd} from "../../store/action/modalMessageAction";
 import {useDispatch} from "react-redux";
+import './contact.scss';
 
 const Contact = () => {
     const [response, setResponse] = useState({});
@@ -49,5 +49,4 @@ const Contact = () => {
         </div>
     );
 };
-
 export default Contact;

@@ -1,26 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import './about.scss';
 import Team from '../../assets/img/About_team.webp'
 import Progress from "../../components/Progress";
 import Achievements from "../../components/Achievements";
+import {addEventResize} from "../../Functions/functions";
+import './about.scss';
+
 
 const About = () => {
     const [slideToShow, setSlideToShow] = useState(window.screen.width >= 768 ? 4 : 1);
-
-    const handleResize = (event) => {
-        if (event.target.innerWidth >= 768) {
-            setSlideToShow(4);
-        } else {
-            setSlideToShow(1);
-        }
-    };
-
     useEffect(() => {
-
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
+        addEventResize((e) => e.target.innerWidth >= 768 ? setSlideToShow(4) : setSlideToShow(1));
     }, []);
     return (
         <div className="about">
@@ -56,5 +45,4 @@ const About = () => {
         </div>
     );
 };
-
 export default About;

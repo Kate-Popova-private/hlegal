@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
-import './employeeCard.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 import axios from "axios";
 import {employeeCardLoadingSuccess} from "../../store/action/employeeCardAction";
+import './employeeCard.scss';
 
 const EmployeeCard = () => {
     const {id} = useParams();
@@ -13,20 +13,15 @@ const EmployeeCard = () => {
     useEffect(() => {
         axios.get(`http://hlegal/api.php?type=employee&id=${id}`).then(({data}) => {
             dispatch(employeeCardLoadingSuccess(data.result));
-            console.log('employee', data.result);
         })
     }, [id])
 
-    useEffect(() => {
-
-    }, [id])
     return (
         <div className="card">
             <section className="employee">
                 <div className="employee__container">
                     <div className="employee__img-wrap">
-                        <img src={`http://hlegal/${employee?.img}`} alt="employee image"
-                             className="employee__img"/>
+                        <img src={`http://hlegal/${employee?.img}`} alt="employee image" className="employee__img"/>
                     </div>
                     <div className="employee__info-wrap">
                         <h2 className="employee__name">{employee?.name}</h2>
@@ -46,5 +41,4 @@ const EmployeeCard = () => {
         </div>
     );
 };
-
 export default EmployeeCard;
