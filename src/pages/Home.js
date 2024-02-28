@@ -22,14 +22,15 @@ const Home = () => {
     }, []);
     return (
         <>
-            <div className="bg-logo">
+            <div className="background-wrapper">
                 <Hero></Hero>
                 <Advantage></Advantage>
                 <Benefits/>
             </div>
             <TeamMessage></TeamMessage>
             <Clients/>
-            <PublicationsList topPage='news' perpage={3} title="We have something to tell"></PublicationsList>
+            <PublicationsList topPage='news' perpage={3} title="We have something to tell"
+                              link={true}></PublicationsList>
         </>
     );
 };

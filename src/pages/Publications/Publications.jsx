@@ -5,57 +5,58 @@ import axios from "axios";
 import DownloadButton from "../../components/DownloadButton";
 import {publicationsArticlesSuccess, publicationsNewsSuccess} from "../../store/action/publicationListAction";
 import {useDispatch, useSelector} from "react-redux";
-import {newsData, articlesData} from "../../data/publicationsData";
+import {publicationData} from "../../data/publicationsData";
 import "./publications.scss";
 
 const Publications = () => {
-    const [topPage, setTopPage] = useState(newsData);
     const {news, articles} = useSelector((store) => store.publicationsList);
-    const [page, setPage] = useState(topPage.page);
+    const [topPage, setTopPage] = useState(publicationData[0]);
+    const [loadingPage, setLoadingPage] = useState(topPage.page);
     const [currentPage, setCurrentPage] = useState(topPage.currentPage);
-    const [maxPage, setMaxPage] = useState(news?.maxPage);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if ((!news.result.length && topPage.name === 'news' && currentPage <= page) || (topPage.name === 'news' && page >= 2 && currentPage < page)) {
-            axios.get(`http://hlegal/api.php?type=${topPage.name}&page=${topPage.page}`).then(({data}) => {
-                setMaxPage(data.maxPage)
-                dispatch(publicationsNewsSuccess(data));
-                setCurrentPage(page);
-                topPage.currentPage = page;
-            })
+        switch (topPage.name) {
+            case 'news':
+                console.log('topPage: ');
+                console.log(topPage);
+                if ((news.result.length < 6 && currentPage === loadingPage) || (loadingPage >= 2 && currentPage < loadingPage)) {
+                    axios.get(`http://hlegal/api.php?type=${topPage.name}&page=${topPage.page}&perpage=6`).then(({data}) => {
+                        dispatch(publicationsNewsSuccess(data));
+                        topPage.currentPage = loadingPage;
+                        topPage.maxPage = data.maxPage;
+                    })
+                }
+                break;
+            case 'article':
+                if ((!articles.result.length && currentPage <= loadingPage) || (loadingPage >= 2 && currentPage < loadingPage)) {
+                    axios.get(`http://hlegal/api.php?type=${topPage.name}&page=${topPage.page}&perpage=2`).then(({data}) => {
+                        dispatch(publicationsArticlesSuccess(data));
+                        topPage.currentPage = loadingPage;
+                        topPage.maxPage = data.maxPage;
+                    })
+                }
+                break;
         }
-        if ((!articles.result.length && topPage.name === 'article' && currentPage <= page) || (topPage.name === 'article' && page >= 2 && currentPage < page)) {
-            axios.get(`http://hlegal/api.php?type=${topPage.name}&page=${topPage.page}&perpage=6`).then(({data}) => {
-                setMaxPage(data.maxPage)
-                dispatch(publicationsArticlesSuccess(data));
-                setCurrentPage(page);
-                topPage.currentPage = page;
-            })
-        }
-
-    }, [topPage, page]);
+    }, [topPage, loadingPage]);
 
     useEffect(() => {
-        setPage(topPage.page);
+        setLoadingPage(topPage.page);
         setCurrentPage(topPage.currentPage);
     }, [topPage]);
 
-    function pageIncrement() {
-        setPage(topPage.page += 1);
-    }
     return (
         <>
             <div className="switch-wrap">
-                <Switch switch1='news' switch2='articles' isActive={topPage}
+                <Switch isActive={topPage}
                         setActive={setTopPage}></Switch>
             </div>
-            <PublicationsList topPage={topPage.name} title={false}></PublicationsList>
+            <PublicationsList topPage={topPage.name} title={false} link={false}></PublicationsList>
             <div className="download-btn-wrap">
-                {maxPage > topPage.page && <DownloadButton pageIncrement={pageIncrement}></DownloadButton>}
+                {topPage.maxPage > topPage.page &&
+                    <DownloadButton pageIncrement={() => setLoadingPage(topPage.page += 1)}></DownloadButton>}
             </div>
         </>
     );
 };
 export default Publications;
-export {newsData, articlesData};

@@ -45,7 +45,7 @@
     width: 32.083125%;
   }
 
-  &:last-child {
+  &:last-child:nth-child(2n+1) {
     flex-grow: 1;
     @media screen and (min-width: 1024px) {
       flex-grow: 0;

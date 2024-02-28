@@ -4,20 +4,21 @@ import Loader from "../Loader/Loader";
 import {Link} from "react-router-dom";
 import LinkArrow from "../LinkArrow";
 import './publications.scss';
+import axios from "axios";
+import {publicationsNewsSuccess} from "../../store/action/publicationListAction";
 
 const PublicationsList = (props) => {
-
     let {loading, news, articles, error} = useSelector((store) => store.publicationsList);
+
 
     return (
         <section className="publications">
             <div className="publications__wrap">
-                <LinkArrow link={"/publications"} linkName={"Publications"}/>
+                {props.link && <LinkArrow link={"/publications"} linkName={"Publications"}/>}
                 {props.title && <h4 className="publications__title">{props.title}</h4>}
                 <div className="publications__container">
                     {loading ? <Loader></Loader>
                         : (props.topPage === 'news' ? news?.result : articles?.result)?.map((item, index) =>
-
                             <Link className="publication" key={`pblc_${index}`} to={`/publication/${item.id}`}>
                                 <img className="publication__img" src={`http://hlegal/${item.img}`}
                                      alt="publication"/>
