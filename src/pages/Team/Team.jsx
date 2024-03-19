@@ -7,7 +7,7 @@ import './team.scss';
 
 const Team = () => {
     const dispatch = useDispatch();
-    const {employeesList} = useSelector((store) => store.employeesList);
+    const {employeesList} = useSelector((store) => store.employees);
     const [employees, setEmployees] = useState([]);
     useEffect(() => {
         axios.get('http://hlegal/api.php?type=employees').then(({data}) => {

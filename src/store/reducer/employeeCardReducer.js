@@ -1,15 +1,16 @@
 import {createReducer} from "@reduxjs/toolkit";
+import {employeeCardLoading, employeeCardLoadingSuccess, employeeCardLoadingFailed} from "../../localFixtureData/reducerVariables";
 
 
 const employeeCardReducer = createReducer([], (builder) => {
     builder
-        .addCase("EMPLOYEE_CARD_LOADING", (store, action) => {
+        .addCase(employeeCardLoading, (store, action) => {
             return {...store, loading: true};
         })
-        .addCase("EMPLOYEE_CARD_LOADING_SUCCESS", (store, action) => {
+        .addCase(employeeCardLoadingSuccess, (store, action) => {
             return {...store, ...{loading: false, employee: action.payload}};
         })
-        .addCase("EMPLOYEE_CARD_LOADING_FAILED", (store, action) => {
+        .addCase(employeeCardLoadingFailed, (store, action) => {
             return {...store, ...{loading: false, error: action.payload}};
         })
 })

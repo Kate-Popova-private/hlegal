@@ -1,8 +1,13 @@
 import {createAction} from "@reduxjs/toolkit";
-import employeesListReducer from "../reducer/employeesListReducer";
+import {
+    employeeCardLoading as loading,
+    employeeCardLoadingSuccess as success,
+    employeeCardLoadingFailed as failed
+} from "../../localFixtureData/reducerVariables";
 
-const employeeCardLoading = createAction('EMPLOYEE_CARD_LOADING');
-const employeeCardLoadingSuccess = createAction('EMPLOYEE_CARD_LOADING_SUCCESS');
-const employeeCardLoadingFailed = createAction('EMPLOYEE_CARD_LOADING_FAILED');
+
+const employeeCardLoading = createAction(loading);
+const employeeCardLoadingSuccess = createAction(success);
+const employeeCardLoadingFailed = createAction(failed);
 
 export {employeeCardLoading, employeeCardLoadingSuccess, employeeCardLoadingFailed};

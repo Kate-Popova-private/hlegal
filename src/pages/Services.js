@@ -1,12 +1,12 @@
 import React from 'react';
-import Benefits from "../components/Benefits";
 import Clients from "../components/Clients/Clients";
+import ServicesList from "../components/ServicesList";
 
 const Services = () => {
     return (
         <>
             <div className="bg-container">
-                <Benefits/>
+                <ServicesList/>
             </div>
             <Clients/>
         </>

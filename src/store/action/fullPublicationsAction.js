@@ -1,7 +1,12 @@
 import {createAction} from "@reduxjs/toolkit";
+import {
+    fullPublicationsLoading as loading,
+    fullPublicationsSuccess as success,
+    fullPublicationsFailed as failed
+} from "../../localFixtureData/reducerVariables";
 
-const fullPublicationsLoading = createAction("FULL_PUBLICATION_LOADING");
-const fullPublicationsSuccess = createAction("FULL_PUBLICATION_SUCCESS");
-const fullPublicationsFailed = createAction("FULL_PUBLICATION_FAILED");
+const fullPublicationsLoading = createAction(loading);
+const fullPublicationsSuccess = createAction(success);
+const fullPublicationsFailed = createAction(failed);
 
-export {fullPublicationsLoading, fullPublicationsSuccess,fullPublicationsFailed};
+export {fullPublicationsLoading, fullPublicationsSuccess, fullPublicationsFailed};

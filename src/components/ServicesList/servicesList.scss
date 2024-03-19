@@ -1,7 +1,7 @@
 @use '../../styles/global' as *
 ;
 
-.benefits {
+.services {
   &__container {
     @media screen and (min-width: 768px) {
       display: flex;
@@ -21,7 +21,7 @@
 }
 
 
-.benefit {
+.service-card {
   a {
     text-decoration: none;
   }

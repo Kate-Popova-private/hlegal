@@ -1,5 +1,5 @@
 import React from 'react';
-import {clientList} from "../../data/clientsData";
+import {clientList} from "../../localFixtureData/clientsData";
 import './clients.scss';
 
 

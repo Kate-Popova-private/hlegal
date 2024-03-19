@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import "./switch.scss";
-import {publicationData} from "../../data/publicationsData";
+import {publicationData} from "../../localFixtureData/publicationsData";
 
 
 const Switch = ({isActive, setActive}) => {

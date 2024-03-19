@@ -11,8 +11,9 @@ import PublicationsList from "../../components/PublicationsList/publicationsList
 import axios from "axios";
 import ModalForm from "../../components/Modal/ModalForm";
 import {modalMessageAdd} from "../../store/action/modalMessageAction";
-import {publicationsNewsSuccess} from "../../store/action/publicationListAction";
+// import {publicationsNewsSuccess} from "../../store/action/publicationListAction";
 import './serviceCard.scss';
+import {createAction} from "@reduxjs/toolkit";
 
 const ServiceCard = () => {
     const {id} = useParams();
@@ -23,6 +24,8 @@ const ServiceCard = () => {
     const [modal, setModal] = useState(false);
     const [response, setResponse] = useState({});
     const body = document.querySelector('body');
+    const {language} = useSelector((store) => store.language);
+
 
     function updateResponse(value) {
         setResponse(value);
@@ -46,18 +49,18 @@ const ServiceCard = () => {
 
     useEffect(() => {
         dispatch(serviceLoading());
-        axios.get(`http://hlegal/api.php?type=services&id=${id}`).then(({data}) => {
+        axios.get(`http://hlegal/api.php?type=services&id=${id}&lang=${language}`).then(({data}) => {
             dispatch(serviceLoadingSuccess(data.result));
         })
-    }, [id])
+    }, [id, language])
 
     useEffect(() => {
         if (!news.result.length) {
-            axios.get(`http://hlegal/api.php?type=news&page=1&perpage=3`).then(({data}) => {
-                dispatch(publicationsNewsSuccess(data));
+            axios.get(`http://hlegal/api.php?type=news&lang=${language}&page=1&perpage=3`).then(({data}) => {
+                dispatch(createAction(`PUBLICATIONS_NEWS_EN_SUCCESS`)(data));
             })
         }
-    }, [])
+    }, [language])
     return (
         <>
             <div className="bg-container">

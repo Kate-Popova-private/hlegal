@@ -1,15 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import Loader from "../Loader/Loader";
-import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {Link, useLocation} from "react-router-dom";
 import LinkArrow from "../LinkArrow";
 import './publications.scss';
-import axios from "axios";
-import {publicationsNewsSuccess} from "../../store/action/publicationListAction";
+import CardLoader from "../CardLoader";
 
 const PublicationsList = (props) => {
-    let {loading, news, articles, error} = useSelector((store) => store.publicationsList);
-
+    const {language} = useSelector((store) => store.language);
+    let {loading, news, articles, error} = useSelector((store) => store[`publicationsList${language}`]);
 
     return (
         <section className="publications">
@@ -17,7 +15,7 @@ const PublicationsList = (props) => {
                 {props.link && <LinkArrow link={"/publications"} linkName={"Publications"}/>}
                 {props.title && <h4 className="publications__title">{props.title}</h4>}
                 <div className="publications__container">
-                    {loading ? <Loader></Loader>
+                    {loading ? <><CardLoader/> <CardLoader/> <CardLoader/></>
                         : (props.topPage === 'news' ? news?.result : articles?.result)?.map((item, index) =>
                             <Link className="publication" key={`pblc_${index}`} to={`/publication/${item.id}`}>
                                 <img className="publication__img" src={`http://hlegal/${item.img}`}
@@ -27,11 +25,10 @@ const PublicationsList = (props) => {
                                 <p className="publication__shortDesc">{item.shortDesc}</p>
                             </Link>
                         )}
+                    {error && <div className="error-message">{error}</div>}
                 </div>
             </div>
         </section>
-
     );
 };
-
 export default PublicationsList;

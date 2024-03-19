@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import ReactSwipe from "react-swipe";
 import {addEventResize} from '../../Functions/functions';
-import {advantageList} from '../../data/advantageData';
+import {advantageList} from '../../localFixtureData/advantageData';
 import './advantage.scss';
 
 const Advantage = () => {

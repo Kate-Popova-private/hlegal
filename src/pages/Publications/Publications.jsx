@@ -3,47 +3,66 @@ import PublicationsList from "../../components/PublicationsList/publicationsList
 import Switch from "../../components/Switch";
 import axios from "axios";
 import DownloadButton from "../../components/DownloadButton";
-import {publicationsArticlesSuccess, publicationsNewsSuccess} from "../../store/action/publicationListAction";
+import {
+    // publicationsArticleLoading,
+    // publicationsArticlesSuccess,
+    // publicationsListFailed,
+    // publicationsNewsLoading,
+    // publicationsNewsSuccess
+} from "../../store/action/publicationListAction";
 import {useDispatch, useSelector} from "react-redux";
-import {publicationData} from "../../data/publicationsData";
+import {publicationData} from "../../localFixtureData/publicationsData";
 import "./publications.scss";
+import {createAction} from "@reduxjs/toolkit";
 
 const Publications = () => {
-    const {news, articles} = useSelector((store) => store.publicationsList);
+    const {language} = useSelector((store) => store.language);
+    const {news, articles} = useSelector((store) => store[`publicationsList${language}`]);
     const [topPage, setTopPage] = useState(publicationData[0]);
     const [loadingPage, setLoadingPage] = useState(topPage.page);
     const [currentPage, setCurrentPage] = useState(topPage.currentPage);
     const dispatch = useDispatch();
 
+
     useEffect(() => {
         switch (topPage.name) {
             case 'news':
-                console.log('topPage: ');
-                console.log(topPage);
+                !news && dispatch(createAction(`PUBLICATIONS_NEWS_${language}_LOADING`)());
+
                 if ((news.result.length < 6 && currentPage === loadingPage) || (loadingPage >= 2 && currentPage < loadingPage)) {
-                    axios.get(`http://hlegal/api.php?type=${topPage.name}&page=${topPage.page}&perpage=6`).then(({data}) => {
-                        dispatch(publicationsNewsSuccess(data));
+                    axios.get(`http://hlegal/api.php?type=${topPage.name}&lang=${language}&page=${topPage.page}&perpage=6`).then(({data}) => {
+                        console.log('ten', data)
+                        // dispatch(publicationsNewsSuccess(data));
+                        dispatch(createAction(`PUBLICATIONS_NEWS_${language}_SUCCESS`)(data));
                         topPage.currentPage = loadingPage;
                         topPage.maxPage = data.maxPage;
-                    })
+                    }).catch(function (error) {
+                        dispatch(createAction(`PUBLICATIONS_LIST_${language}_FAILED`)(error.message));
+                    });
                 }
                 break;
             case 'article':
+                !articles && dispatch(createAction(`PUBLICATIONS_ARTICLE_${language}_LOADING`)());
+
                 if ((!articles.result.length && currentPage <= loadingPage) || (loadingPage >= 2 && currentPage < loadingPage)) {
-                    axios.get(`http://hlegal/api.php?type=${topPage.name}&page=${topPage.page}&perpage=2`).then(({data}) => {
-                        dispatch(publicationsArticlesSuccess(data));
+                    axios.get(`http://hlegal/api.php?type=${topPage.name}&lang=${language}&page=${topPage.page}&perpage=6`).then(({data}) => {
+                        dispatch(createAction(`PUBLICATIONS_ARTICLES_${language}_SUCCESS`)(data));
                         topPage.currentPage = loadingPage;
                         topPage.maxPage = data.maxPage;
-                    })
+                    }).catch(function (error) {
+                        dispatch(createAction(`PUBLICATIONS_LIST_${language}_FAILED`)(error.message));
+                    });
                 }
                 break;
         }
-    }, [topPage, loadingPage]);
+        console.log('language', language);
+    }, [topPage, loadingPage, language]);
 
     useEffect(() => {
         setLoadingPage(topPage.page);
         setCurrentPage(topPage.currentPage);
-    }, [topPage]);
+        dispatch(createAction(`PUBLICATIONS_LIST_${language}_FAILED`)());
+    }, [topPage, language]);
 
     return (
         <>

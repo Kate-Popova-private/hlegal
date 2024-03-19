@@ -12,7 +12,6 @@
 //         setMobileLayout(false);
 //     }
 // };
-
 export function addEventResize(handleResize) {
     window.addEventListener('resize', handleResize);
     return () => {

@@ -1,15 +1,19 @@
 import {createReducer} from "@reduxjs/toolkit";
-
+import {
+    employeesListLoading,
+    employeesListLoadingSuccess,
+    employeesListLoadingFailed
+} from "../../localFixtureData/reducerVariables";
 
 const employeesListReducer = createReducer([], (builder) => {
     builder
-        .addCase("EMPLOYEES_LIST_LOADING", (store, action) => {
+        .addCase(employeesListLoading, (store, action) => {
             return {...store, loading: true};
         })
-        .addCase("EMPLOYEES_LIST_LOADING_SUCCESS", (store, action) => {
+        .addCase(employeesListLoadingSuccess, (store, action) => {
             return {...store, ...{loading: false, employeesList: action.payload}};
         })
-        .addCase("EMPLOYEES_LIST_LOADING_FAILED", (store, action) => {
+        .addCase(employeesListLoadingFailed, (store, action) => {
             return {...store, ...{loading: false, error: action.payload}};
         })
 })

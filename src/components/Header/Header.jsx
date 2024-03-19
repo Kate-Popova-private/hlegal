@@ -1,6 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import hLogoName from "../../assets/img/hlegal_name.svg";
-import hLogoName_dark from "../../assets/img/hLogoName_dark.svg";
 import {Link, NavLink, Outlet, useLocation, useParams} from "react-router-dom";
 import Footer from "../Footer";
 import Breadcrumbs from "../Breadcrumbs";
@@ -8,6 +6,9 @@ import {useDispatch} from "react-redux";
 import {languageSelected} from "../../store/action/languageAction";
 import './header.scss';
 import MobileMenu from "../MobileMenu";
+import logoBlack from '../../assets/logo/gb7.png';
+import logoWhite from '../../assets/logo/gw5.png';
+import agarlic from '../../assets/logo/Agarliclol.png';
 
 const Header = () => {
 
@@ -94,9 +95,11 @@ const Header = () => {
                     </Link>
                 </div>
                 <div className="header__container">
-                    <Link to="/" className="header__logo logo"><img className="header__logo-img"
-                                                                    src={headerTheme === 'color-dark' ? hLogoName : hLogoName_dark}
-                                                                    alt="hlegal"/>
+                    <Link to="/" className="header__logo logo">
+                        <img className="header__logo-name"
+                             src={headerTheme === 'color-dark' ? logoWhite : logoBlack}
+                             alt="hlegal"/>
+                        {location.pathname === '/' && <img src={agarlic} alt="garlic" className="header__logo-img"/>}
                         <Breadcrumbs colorTheme={headerTheme}></Breadcrumbs>
                     </Link>
                     <nav className={`nav header__nav nav_${headerTheme}`}>

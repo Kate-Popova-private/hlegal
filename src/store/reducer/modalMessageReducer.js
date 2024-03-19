@@ -1,12 +1,13 @@
 import {createReducer} from "@reduxjs/toolkit";
+import {modalMessageAdd, modalMessageRemove} from "../../localFixtureData/reducerVariables";
 
 
 const modalMessageReducer = createReducer({message:false}, (builder) => {
     builder
-        .addCase("ADD_MESSAGE", (store, action) => {
+        .addCase("modalMessageAdd", (store, action) => {
             return {...store, message: action.payload};
         })
-        .addCase("REMOVE_MESSAGE", (store, action) => {
+        .addCase("modalMessageRemove", (store, action) => {
             return {...store, ...{message: false}};
         })
 })

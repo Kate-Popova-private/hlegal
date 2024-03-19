@@ -1,23 +1,30 @@
 import {configureStore} from "@reduxjs/toolkit";
-import benefitsReducer from "./reducer/benefitsReducer";
+import servicesListReducer from "./reducer/servicesListReducer";
 import serviceReducer from "./reducer/serviceReducer";
 import languageReducer from "./reducer/languageReducer";
-import publicationsListReducer from "./reducer/publicationsListReducer";
-import fullPublicationsReducer from "./reducer/fullPublicationsReducer";
 import modalMessageReducer from "./reducer/modalMessageReducer";
 import employeesListReducer from "./reducer/employeesListReducer";
 import employeeCardReducer from "./reducer/employeeCardReducer";
+import fullPublicationsReducerUK from "./reducer/fullPublicationsReducerUK";
+import fullPublicationsReducerEN from "./reducer/fullPublicationsReducerEN";
+import fullPublicationsReducerRU from "./reducer/fullPublicationsReducerRU";
+import {publicationListReducer} from "../Functions/publicationListReducerFn";
+import {fullPublicationsReducer} from "../Functions/fullPublicationsReducerFn";
 
 
 export const store = configureStore({
     reducer: {
-        benefits: benefitsReducer,
+        services: servicesListReducer,
         service: serviceReducer,
         language: languageReducer,
-        publicationsList: publicationsListReducer,
-        fullPublications: fullPublicationsReducer,
+        publicationsListEN: publicationListReducer('EN'),
+        publicationsListUA: publicationListReducer('UA'),
+        publicationsListRU: publicationListReducer('RU'),
+        fullPublicationsEN: fullPublicationsReducer('EN'),
+        fullPublicationsUA: fullPublicationsReducer('UA'),
+        fullPublicationsRU: fullPublicationsReducer('RU'),
         modalMessage: modalMessageReducer,
-        employeesList: employeesListReducer,
+        employees: employeesListReducer,
         employeeCard: employeeCardReducer,
     }
 })

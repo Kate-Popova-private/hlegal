@@ -1,35 +1,38 @@
 import React, {useEffect} from 'react';
-import Benefits from "../components/Benefits";
 import Clients from "../components/Clients/Clients";
 import PublicationsList from "../components/PublicationsList/publicationsList";
 import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
-import {publicationsNewsSuccess} from "../store/action/publicationListAction";
 import TeamMessage from "../components/TeamMessage";
 import Advantage from "../components/Advantage";
 import Hero from "../components/Hero";
+import ServicesList from "../components/ServicesList";
+import {createAction} from "@reduxjs/toolkit";
 
 const Home = () => {
-    let {news} = useSelector((store) => store.publicationsList)
+    const {language} = useSelector((store) => store.language);
+    let {news} = useSelector((store) => store[`publicationsList${language}`] || {});
     const dispatch = useDispatch();
 
     useEffect(() => {
         if (!news.result.length) {
-            axios.get(`http://hlegal/api.php?type=news&page=1&mode=list&perpage=3`).then(({data}) => {
-                dispatch(publicationsNewsSuccess(data));
+            axios.get(`http://hlegal/api.php?type=news&lang=${language}&page=1&mode=list&perpage=3`).then(({data}) => {
+                dispatch(createAction(`PUBLICATIONS_NEWS_${language}_SUCCESS`)(data));
             })
         }
-    }, []);
+        console.log('language', language);
+
+    }, [language]);
     return (
         <>
             <div className="background-wrapper">
                 <Hero></Hero>
                 <Advantage></Advantage>
-                <Benefits/>
+                <ServicesList/>
             </div>
             <TeamMessage></TeamMessage>
             <Clients/>
-            <PublicationsList topPage='news' perpage={3} title="We have something to tell"
+            <PublicationsList topPage='news' title="We have something to tell"
                               link={true}></PublicationsList>
         </>
     );

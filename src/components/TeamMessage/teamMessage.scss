@@ -47,8 +47,7 @@
   }
 
   &__title {
-    @extend %bg-linear-gradient-reversed;
-    @include font(700, 30px, 37px);
+    @include h2-mobile-gradient-reversed;
     padding: 5px 0 30px 0;
     @media screen and (min-width: 768px) {
       @include font(700, 38px, 46px);

@@ -2,16 +2,18 @@ import React, {useEffect, useState} from 'react';
 import PublicationsList from "../../components/PublicationsList/publicationsList";
 import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
-import {publicationsNewsSuccess} from "../../store/action/publicationListAction";
+// import {publicationsNewsSuccess} from "../../store/action/publicationListAction";
 import {useParams} from "react-router-dom";
 import {fullPublicationsSuccess} from "../../store/action/fullPublicationsAction";
 import Socials from "../../components/Socials";
 import "./publicationCard.scss";
+import {createAction} from "@reduxjs/toolkit";
 
 const PublicationCard = () => {
     const {id} = useParams();
-    let {news} = useSelector((store) => store.publicationsList);
-    let {publicationCard} = useSelector((store) => store.fullPublications);
+    const {language} = useSelector((store) => store.language);
+    let {news} = useSelector((store) => store[`publicationsList${language}`]);
+    let {publicationCard} = useSelector((store) => store[`fullPublications${language}`]);
     const dispatch = useDispatch();
     let {img, title, paragraph, created_at} = {...publicationCard?.result?.mainContent};
     let {additionalContent} = {...publicationCard?.result};
@@ -19,18 +21,18 @@ const PublicationCard = () => {
     useEffect(() => {
         // For recommendation section
         if (news.result.length === 0) {
-            axios.get(`http://hlegal/api.php?type=news&page=1&perpage=3`).then(({data}) => {
-                dispatch(publicationsNewsSuccess(data));
+            axios.get(`http://hlegal/api.php?type=news&lang=${language}&page=1&perpage=3`).then(({data}) => {
+                dispatch(createAction(`PUBLICATIONS_NEWS_${language}_SUCCESS`)(data));
             })
         }
-        axios.get(`http://hlegal/api.php?type=news&id=${id}`).then(({data}) => {
+        axios.get(`http://hlegal/api.php?type=news&lang=${language}&id=${id}`).then(({data}) => {
             data.result.additionalContent?.sort(function (a, b) {
                 return a.position - b.position;
             })
-            dispatch(fullPublicationsSuccess(data));
+            dispatch(createAction(`FULL_PUBLICATION_${language}_SUCCESS`)(data));
 
         }).catch((exception) => console.log('exception: ', exception));
-    }, [id]);
+    }, [id, language]);
 
     return (
         <>

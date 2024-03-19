@@ -14,16 +14,11 @@
   }
 
   &__title {
-    @extend %bg-linear-gradient-reversed;
-    @include font(700, 30px, 37px);
+    @include h2-mobile-gradient-reversed;
     margin: 5px 0 30px;
   }
 }
 
-//Не работает
-//.publication:nth-last-child(1){
-//  margin-bottom: 0;
-//}
 .publication {
   display: block;
   background: #FFFFFF;

@@ -1,14 +1,15 @@
 import {createReducer} from "@reduxjs/toolkit";
+import {serviceLoading, serviceLoadingSuccess, serviceLoadingFailed} from '../../localFixtureData/reducerVariables';
 
 const serviceReducer = createReducer({}, builder => {
     builder
-        .addCase("SERVICE_LOADING", (store, action) => {
+        .addCase(serviceLoading, (store) => {
             return {...store, loading: true};
         })
-        .addCase("SERVICE_SUCCESS", (store, action) => {
-            return {...store, ...{loading: false, fullService:action.payload}};
+        .addCase(serviceLoadingSuccess, (store, action) => {
+            return {...store, ...{loading: false, fullService: action.payload}};
         })
-        .addCase("SERVICE_FAILED", (store, action) => {
+        .addCase(serviceLoadingFailed, (store, action) => {
             return {...store, ...{loading: false, error: action.payload}};
         })
 })

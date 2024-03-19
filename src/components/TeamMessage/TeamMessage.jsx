@@ -4,9 +4,11 @@ import axios from "axios";
 import Slider from "react-slick";
 import {Link} from "react-router-dom";
 import LinkArrow from "../LinkArrow";
+import {useSelector} from "react-redux";
 
 const TeamMessage = () => {
     const [employeeMessage, setEmployeeMessage] = useState([]);
+    const {language} = useSelector((store) => store.language);
 
     const settings = {
         dots: true,
@@ -18,10 +20,10 @@ const TeamMessage = () => {
         className: 'team__container',
     };
     useEffect(() => {
-        axios.get('http://hlegal/api.php?type=employeeMessage').then(({data}) => {
+        axios.get(`http://hlegal/api.php?type=employeeMessage&lang=${language}`).then(({data}) => {
             setEmployeeMessage(data.result);
         })
-    }, [])
+    }, [language])
 
     return (
         <section className="team-message">
