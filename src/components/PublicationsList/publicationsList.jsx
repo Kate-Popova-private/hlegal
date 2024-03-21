@@ -7,7 +7,7 @@ import CardLoader from "../CardLoader";
 
 const PublicationsList = (props) => {
     const {language} = useSelector((store) => store.language);
-    let {loading, news, articles, error} = useSelector((store) => store[`publicationsList${language}`]);
+    let {loading, news, articles, error} = useSelector((store) => store.publicationsList);
 
     return (
         <section className="publications">

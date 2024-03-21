@@ -4,11 +4,9 @@ import Switch from "../../components/Switch";
 import axios from "axios";
 import DownloadButton from "../../components/DownloadButton";
 import {
-    // publicationsArticleLoading,
-    // publicationsArticlesSuccess,
-    // publicationsListFailed,
-    // publicationsNewsLoading,
-    // publicationsNewsSuccess
+    publicationsArticlesSuccess,
+    publicationsListFailed,
+    publicationsNewsSuccess
 } from "../../store/action/publicationListAction";
 import {useDispatch, useSelector} from "react-redux";
 import {publicationData} from "../../localFixtureData/publicationsData";
@@ -17,9 +15,9 @@ import {createAction} from "@reduxjs/toolkit";
 
 const Publications = () => {
     const {language} = useSelector((store) => store.language);
-    const {news, articles} = useSelector((store) => store[`publicationsList${language}`]);
+    const {news, articles} = useSelector((store) => store.publicationsList);
     const [topPage, setTopPage] = useState(publicationData[0]);
-    const [loadingPage, setLoadingPage] = useState(topPage.page);
+    const [loadingPage, setLoadingPage] = useState(topPage.loadingPage);
     const [currentPage, setCurrentPage] = useState(topPage.currentPage);
     const dispatch = useDispatch();
 
@@ -27,41 +25,38 @@ const Publications = () => {
     useEffect(() => {
         switch (topPage.name) {
             case 'news':
-                !news && dispatch(createAction(`PUBLICATIONS_NEWS_${language}_LOADING`)());
-
-                if ((news.result.length < 6 && currentPage === loadingPage) || (loadingPage >= 2 && currentPage < loadingPage)) {
-                    axios.get(`http://hlegal/api.php?type=${topPage.name}&lang=${language}&page=${topPage.page}&perpage=6`).then(({data}) => {
+                // if ((news.result.length < 6 && currentPage === loadingPage) || (loadingPage >= 2 && currentPage < loadingPage)) {
+                    axios.get(`http://hlegal/api.php?type=${topPage.name}&lang=${language}&page=${topPage.loadingPage}&perpage=6`).then(({data}) => {
                         console.log('ten', data)
-                        // dispatch(publicationsNewsSuccess(data));
-                        dispatch(createAction(`PUBLICATIONS_NEWS_${language}_SUCCESS`)(data));
+                        dispatch(publicationsNewsSuccess(data));
                         topPage.currentPage = loadingPage;
                         topPage.maxPage = data.maxPage;
                     }).catch(function (error) {
-                        dispatch(createAction(`PUBLICATIONS_LIST_${language}_FAILED`)(error.message));
+                        dispatch(publicationsListFailed(error.message));
                     });
-                }
+                // }
                 break;
             case 'article':
-                !articles && dispatch(createAction(`PUBLICATIONS_ARTICLE_${language}_LOADING`)());
 
-                if ((!articles.result.length && currentPage <= loadingPage) || (loadingPage >= 2 && currentPage < loadingPage)) {
-                    axios.get(`http://hlegal/api.php?type=${topPage.name}&lang=${language}&page=${topPage.page}&perpage=6`).then(({data}) => {
-                        dispatch(createAction(`PUBLICATIONS_ARTICLES_${language}_SUCCESS`)(data));
+                // if ((!articles.result.length && currentPage <= loadingPage) || (loadingPage >= 2 && currentPage < loadingPage)) {
+                    axios.get(`http://hlegal/api.php?type=${topPage.name}&lang=${language}&page=${topPage.loadingPage}&perpage=6`).then(({data}) => {
+                        dispatch(publicationsArticlesSuccess(data));
+
                         topPage.currentPage = loadingPage;
                         topPage.maxPage = data.maxPage;
                     }).catch(function (error) {
-                        dispatch(createAction(`PUBLICATIONS_LIST_${language}_FAILED`)(error.message));
+                        dispatch(publicationsListFailed(error.message));
                     });
-                }
+                // }
                 break;
         }
-        console.log('language', language);
+
     }, [topPage, loadingPage, language]);
 
     useEffect(() => {
-        setLoadingPage(topPage.page);
+        setLoadingPage(topPage.loadingPage);
         setCurrentPage(topPage.currentPage);
-        dispatch(createAction(`PUBLICATIONS_LIST_${language}_FAILED`)());
+        dispatch(publicationsListFailed());
     }, [topPage, language]);
 
     return (
@@ -72,8 +67,8 @@ const Publications = () => {
             </div>
             <PublicationsList topPage={topPage.name} title={false} link={false}></PublicationsList>
             <div className="download-btn-wrap">
-                {topPage.maxPage > topPage.page &&
-                    <DownloadButton pageIncrement={() => setLoadingPage(topPage.page += 1)}></DownloadButton>}
+                {topPage.maxPage > topPage.loadingPage &&
+                    <DownloadButton pageIncrement={() => setLoadingPage(topPage.loadingPage += 1)}></DownloadButton>}
             </div>
         </>
     );

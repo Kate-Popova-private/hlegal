@@ -8,12 +8,13 @@ import {fullPublicationsSuccess} from "../../store/action/fullPublicationsAction
 import Socials from "../../components/Socials";
 import "./publicationCard.scss";
 import {createAction} from "@reduxjs/toolkit";
+import {publicationsNewsSuccess} from "../../store/action/publicationListAction";
 
 const PublicationCard = () => {
     const {id} = useParams();
     const {language} = useSelector((store) => store.language);
-    let {news} = useSelector((store) => store[`publicationsList${language}`]);
-    let {publicationCard} = useSelector((store) => store[`fullPublications${language}`]);
+    let {news} = useSelector((store) => store.publicationsList);
+    let {publicationCard} = useSelector((store) => store.fullPublications);
     const dispatch = useDispatch();
     let {img, title, paragraph, created_at} = {...publicationCard?.result?.mainContent};
     let {additionalContent} = {...publicationCard?.result};
@@ -22,14 +23,14 @@ const PublicationCard = () => {
         // For recommendation section
         if (news.result.length === 0) {
             axios.get(`http://hlegal/api.php?type=news&lang=${language}&page=1&perpage=3`).then(({data}) => {
-                dispatch(createAction(`PUBLICATIONS_NEWS_${language}_SUCCESS`)(data));
+                dispatch(publicationsNewsSuccess(data));
             })
         }
         axios.get(`http://hlegal/api.php?type=news&lang=${language}&id=${id}`).then(({data}) => {
             data.result.additionalContent?.sort(function (a, b) {
                 return a.position - b.position;
             })
-            dispatch(createAction(`FULL_PUBLICATION_${language}_SUCCESS`)(data));
+            dispatch(fullPublicationsSuccess(data));
 
         }).catch((exception) => console.log('exception: ', exception));
     }, [id, language]);

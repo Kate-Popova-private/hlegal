@@ -12,14 +12,14 @@ export const articlesData = {
 export const publicationData = [
     {
         name: 'news',
-        page: 1,
+        loadingPage: 1,
         currentPage: 1,
         maxPage: 0,
 
     },
     {
         name: 'article',
-        page: 1,
+        loadingPage: 1,
         currentPage: 1,
         maxPage: 0,
     },

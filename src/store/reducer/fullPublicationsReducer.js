@@ -2,7 +2,7 @@ import {createReducer} from "@reduxjs/toolkit";
 import {fullPublicationsLoading , fullPublicationsSuccess, fullPublicationsFailed} from "../../localFixtureData/reducerVariables";
 
 
-const fullPublicationsReducerEN = createReducer([], builder => {
+const fullPublicationsReducer = createReducer([], builder => {
     builder
         .addCase(fullPublicationsLoading, (store, action) => {
             return {...store, loading: true};
@@ -14,4 +14,4 @@ const fullPublicationsReducerEN = createReducer([], builder => {
         return {...store, ...{loading: false, error: action.payload}};
     })
 })
-export default fullPublicationsReducerEN;
+export default fullPublicationsReducer;
